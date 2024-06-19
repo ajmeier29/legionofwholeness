@@ -8,11 +8,20 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
+        //'hero-image': "url('/images/beachSunset.jpg')",
+        'hero-image': "url('/images/blue-breakthrough-over-mountains.jpg')",
         'hero-gradient':
-          "linear-gradient(20deg, rgba(71,129,236,1) 0%, rgba(38,62,227,1) 41%, rgba(38,62,227,1) 60%, rgba(130,241,220,1) 100%)",
+          "linear-gradient(100deg, rgba(246,230,203,1) 0%, rgba(160,147,125,1) 31%, rgba(160,147,125,1) 76%, rgba(246,230,203,1) 100%)",
         'hero-gradient-background':
           "linear-gradient(100deg, rgba(216,222,255,1) 0%, rgba(242,244,255,1) 27%, rgba(242,244,255,1) 76%, rgba(216,222,255,1) 100%)",
       },
+      colors: {
+        "primary": "#e3d5d5",
+        "button-primary": "#F6E6CB"
+      },
+      fontSize: {
+        "navbar-font-xl": "20px"
+      }
     },
   },
   plugins: [],
