@@ -1,3 +1,4 @@
+import BlogPostsDisplay from "@/components/BlogPostsDisplay";
 import ButtonBar from "@/components/ButtonBar";
 import Hero from "@/components/Hero";
 import Image from "next/image";
@@ -12,6 +13,9 @@ export default function Home() {
         </div>
         <div>
           <ButtonBar />
+        </div>
+        <div>
+          <BlogPostsDisplay />
         </div>
       </div>
     </>
