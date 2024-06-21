@@ -53,11 +53,11 @@ const BlogPostTile = (props: Props) => {
                     <div className="relative">
                         <img className='object-cover w-full justify-center rounded-lg' src={props.imgPath} />
                         <img className='absolute blur-sm object-cover h-[25%] object-bottom w-full justify-center rounded-lg bottom-0 left-0 z-20' src={props.imgPath} />
-                        <div className="absolute bottom-7 left-2 ml-3 w-full z-30">
-                            <h3 className="text-white text-lg font-normal">
+                        <div className="absolute bottom-3 sm:bottom-9 md:bottom-3 lg:bottom-7 left-2 ml-3 w-full z-30">
+                            <h3 className="text-white text-xs sm:text-xl md:text-lg lg:text-lg font-normal">
                                 {props.author}
                             </h3>
-                            <h4 className="text-white text-md font-thin">
+                            <h4 className="text-white text-xs lg:text-md font-thin">
                                 {props.date}
                             </h4>
                         </div>

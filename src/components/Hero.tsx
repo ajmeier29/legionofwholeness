@@ -11,13 +11,13 @@ export default function Hero() {
             <div className='absolute top-4 right-2'>
                 <Navbar />
             </div>
-            <div className="absolute bottom-20 left-12">
+            <div className="absolute bottom-6 md:bottom-20 left-7 md:left-12">
                 <div className='w-full'>
                     <h2 className='text-[40px] font-light text-primary inline'>LEGION OF&nbsp;</h2>
                     <GradiantText
                         text='WHOLENESS'
                         gradient='hero-gradient'
-                        options='text-[55px] font-extrabold inline' />
+                        options='text-[45px] md:text-[55px] font-extrabold inline' />
                     <p className='text-primary text-[17px]'>Helping others to find their strength through remembering their true self.</p>
                     <button type="button" className="mt-5 px-3 py-3 bg-button-primary text-slate-800 rounded-md hover:bg-blue-700 relative items-end">
                         Subscribe
