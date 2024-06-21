@@ -5,28 +5,28 @@ export default function BlogPostsDisplay() {
         <>
             <div className="grid grid-cols-1 md:grid-cols-2 mt-4 gap-4 justify-center mx-3">
                 <BlogPostTile
-                    author="Justin Bredbenner"
+                    author="Justin B."
                     date="Jan 1 2024"
                     title="The Collective, and the Impending Beginning of the World"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus."
                     imgPath="/images/autumn-hike-at-waterfall.jpg"
                 />
                 <BlogPostTile
-                    author="Justin Bredbenner"
+                    author="Justin B."
                     date="Jan 1 2024"
                     title="The Collective, and the Impending Beginning of the World"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus."
                     imgPath="/images/hand-on-tree-bark.jpg"
                 />
                 <BlogPostTile
-                    author="Justin Bredbenner"
+                    author="Justin B."
                     date="Jan 1 2024"
                     title="The Collective, and the Impending Beginning of the World"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus."
                     imgPath="/images/nature-photographer.jpg"
                 />
                 <BlogPostTile
-                    author="Justin Bredbenner"
+                    author="Justin B."
                     date="Jan 1 2024"
                     title="The Collective, and the Impending Beginning of the World"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus."
