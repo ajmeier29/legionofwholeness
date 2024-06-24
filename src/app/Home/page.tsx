@@ -1,5 +1,5 @@
 import BlogPostPage from "@/components/BlogPost";
-import HomePage from "@/components/Home";
+import HomePage from "@/components/HomePage";
 
 
 export default function Page() {
