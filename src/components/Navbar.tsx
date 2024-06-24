@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ReactNode } from "react";
 
 
@@ -25,9 +26,11 @@ interface MyComponentProps {
 
 const NavBarOption: React.FC<MyComponentProps> = ({ children }) => {
     return (
-        <span className="mr-5 text-button-primary text-navbar-font-xl">
+        <Link href={'/Home'}>
+        <span className="mr-5 text-button-primary text-navbar-font-xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
             {children}
         </span>
+        </Link>
     );
 };
 

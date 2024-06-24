@@ -21,7 +21,7 @@ module.exports = {
       },
       fontSize: {
         "navbar-font-xl": "20px"
-      }
+      },
     },
   },
   plugins: [],
