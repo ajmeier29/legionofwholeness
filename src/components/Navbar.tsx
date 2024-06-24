@@ -6,13 +6,13 @@ export default function Navbar() {
     return (
         <>
             <div className="flex flex-row justify-between text-white">
-                <NavBarOption>
+                <NavBarOption link='/Home'>
                     HOME
                 </NavBarOption>
-                <NavBarOption>
+                <NavBarOption link='#'>
                     BLOG
                 </NavBarOption>
-                <NavBarOption>
+                <NavBarOption link='/Contact'>
                     CONTACT
                 </NavBarOption>
             </div>
@@ -20,13 +20,14 @@ export default function Navbar() {
     )
 }
 
-interface MyComponentProps {
+interface Props {
     children: ReactNode;
+    link: string;
 }
 
-const NavBarOption: React.FC<MyComponentProps> = ({ children }) => {
+const NavBarOption: React.FC<Props> = ({ children, link }) => {
     return (
-        <Link href={'/Home'}>
+        <Link href={link}>
         <span className="mr-5 text-button-primary text-navbar-font-xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
             {children}
         </span>
