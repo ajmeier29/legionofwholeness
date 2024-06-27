@@ -1,7 +1,7 @@
 // Firestore imports
 import { collection, getDocs, query as fireQuery, where } from "firebase/firestore"; // Import the 'where' function
-import { db } from '../firebase.js';
-import express from "express";
+import { db, bucket } from '../firebase.js';
+import express, { response } from "express";
 import 'dotenv/config';
 import admin from 'firebase-admin';
 import { getDownloadURL, getStorage } from 'firebase-admin/storage';
@@ -20,6 +20,21 @@ posts.get('/', async (req, res) => {
         querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
             respData = doc.data();
+
+
+            console.log(`respData ${JSON.stringify(respData)}`);
+
+            // Specify the path to your file
+            console.log(`header_image before: ${respData.header_image}`);
+            const filePath = respData.header_image; // Replace with your actual file path
+            console.log(`header_image: ${filePath}`);
+
+            // Get the download URL
+            getDownloadURL(bucket.file(filePath)).then((downloadUrl) => {
+                console.log('Download URL:', downloadUrl);
+                // Use the downloadUrl as needed (e.g., display it in your app)
+            })
+
             console.log(doc.id, " => ", doc.data());
         });
 

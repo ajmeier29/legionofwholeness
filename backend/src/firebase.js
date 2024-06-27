@@ -5,12 +5,17 @@ import 'dotenv/config'
 import * as serviceAccount from './servcieAccount.js';
 import admin from 'firebase-admin';
 
-console.log(`serviceAccount: ${JSON.stringify(serviceAccount.default)}`)
-
+// ----- Firebase Storage
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount.default)
 });
 
+// Get a reference to your storage bucket
+const bucket = admin.storage().bucket(process.env.STORAGE_BUCKET);
+
+// ----- Firebase StorageEnd 
+
+// ----- Firestore
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -30,4 +35,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // Export firestore database
 // It will be imported into your react app whenever it is needed
-export const db = getFirestore(app);
+const db = getFirestore(app);
+export {
+    db,
+    bucket
+}
