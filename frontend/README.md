@@ -1,6 +1,6 @@
 # Legion Of Wholeness
 
-This is a blog website that is utilizing the MERN stack.
+This is the frontend project for the Legion Of Wholeness blog. 
 
 Technologies used:
 - Next.js
