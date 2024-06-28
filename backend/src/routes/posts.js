@@ -15,19 +15,20 @@ const posts = express.Router();
 posts.get('/', async (req, res) => {
     try {
         const q = fireQuery(collection(db, "blog"), where("status", "==", "published")); // Use the 'where' function here
-        var respData = {}
         const querySnapshot = await getDocs(q); // Await the result of getDocs
+        const respData = [];
         querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
-            respData = doc.data();
+            var data = doc.data();
+            respData.push(data);
 
 
             console.log(`respData ${JSON.stringify(respData)}`);
 
             // Specify the path to your file
-            console.log(`header_image before: ${respData.header_image}`);
-            const filePath = respData.header_image; // Replace with your actual file path
-            console.log(`header_image: ${filePath}`);
+            //console.log(`header_image before: ${respData.header_image}`);
+            const filePath = data.header_image; // Replace with your actual file path
+            //console.log(`header_image: ${filePath}`);
 
             // Get the download URL
             getDownloadURL(bucket.file(filePath)).then((downloadUrl) => {
