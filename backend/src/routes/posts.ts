@@ -23,15 +23,16 @@ type CreatedOn =
     }
 type BlogPostData =
     {
-        publish_date: string,
-        tags: string[],
-        name: string,
-        content: Content[],
-        status: 'draft' | 'published',
-        created_on: CreatedOn,
-        header_image: string,
+        publish_date?: string,
+        tags?: string[],
+        name?: string,
+        content?: Content[],
+        status?: 'draft' | 'published',
+        created_on?: CreatedOn,
+        header_image?: string,
         header_image_full?: string,
-        reviewed: boolean
+        reviewed?: boolean,
+        filePath?: string
     }
 
 // Define a route
@@ -40,27 +41,16 @@ posts.get('/', async (req, res) => {
         const q = fireQuery(collection(db, "blog"), where("status", "==", "published")); // Use the 'where' function here
         const querySnapshot = await getDocs(q); // Await the result of getDocs
         const respData: any[] = [];
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            var data = doc.data();
-            respData.push(data);
 
-
-            console.log(`respData ${JSON.stringify(respData)}`);
-
-            // Specify the path to your file
-            //console.log(`header_image before: ${respData.header_image}`);
-            const filePath = data.header_image; // Replace with your actual file path
-            //console.log(`header_image: ${filePath}`);
-
+        // Use Promise.all to wait for all async operations to complete
+        await Promise.all(querySnapshot.docs.map(async (doc) => {
+            const data: BlogPostData = doc.data();
             // Get the download URL
-            getDownloadURL(bucket.file(filePath)).then((downloadUrl) => {
-                console.log('Download URL:', downloadUrl);
-                // Use the downloadUrl as needed (e.g., display it in your app)
-            })
-
-            console.log(doc.id, " => ", doc.data());
-        });
+            const downloadUrl = await getDownloadURL(bucket.file(data?.header_image ?? ''));
+            data.header_image_full = downloadUrl;
+            // Add to response data
+            respData.push(data);
+        }));
 
         res.send({
             'data': respData

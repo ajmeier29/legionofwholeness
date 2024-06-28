@@ -26,22 +26,16 @@ posts.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const q = (0, firestore_1.query)((0, firestore_1.collection)(firebase_js_1.db, "blog"), (0, firestore_1.where)("status", "==", "published")); // Use the 'where' function here
         const querySnapshot = yield (0, firestore_1.getDocs)(q); // Await the result of getDocs
         const respData = [];
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            var data = doc.data();
-            respData.push(data);
-            console.log(`respData ${JSON.stringify(respData)}`);
-            // Specify the path to your file
-            //console.log(`header_image before: ${respData.header_image}`);
-            const filePath = data.header_image; // Replace with your actual file path
-            //console.log(`header_image: ${filePath}`);
+        // Use Promise.all to wait for all async operations to complete
+        yield Promise.all(querySnapshot.docs.map((doc) => __awaiter(void 0, void 0, void 0, function* () {
+            var _a;
+            const data = doc.data();
             // Get the download URL
-            (0, storage_1.getDownloadURL)(firebase_js_1.bucket.file(filePath)).then((downloadUrl) => {
-                console.log('Download URL:', downloadUrl);
-                // Use the downloadUrl as needed (e.g., display it in your app)
-            });
-            console.log(doc.id, " => ", doc.data());
-        });
+            const downloadUrl = yield (0, storage_1.getDownloadURL)(firebase_js_1.bucket.file((_a = data === null || data === void 0 ? void 0 : data.header_image) !== null && _a !== void 0 ? _a : ''));
+            data.header_image_full = downloadUrl;
+            // Add to response data
+            respData.push(data);
+        })));
         res.send({
             'data': respData
         }); // This gets executed when the user visits http://localhost:3000/user
