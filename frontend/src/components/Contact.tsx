@@ -10,8 +10,6 @@ export default function Contact() {
     const recaptcha = React.useRef<ReCAPTCHA>(null);
     const [loading, setLoading] = useState(false);
 
-    console.log(`Site key${captchaKey}`)
-
     async function onChange(value: any) {
         // verify captcha
         console.log('called on change');
@@ -61,7 +59,7 @@ export default function Contact() {
                                     ) : (
                                         <div className="text-slate-800">
                                             Submit
-                                            <svg className="inline h-5 w-5 text-slate-600" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <polyline points="9 6 15 12 9 18" /></svg>
+                                            <svg className="inline h-5 w-5 text-slate-600" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <polyline points="9 6 15 12 9 18" /></svg>
                                         </div>
                                     )}
                                 </div>

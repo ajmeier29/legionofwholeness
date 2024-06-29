@@ -1,8 +1,8 @@
-import HomePage from "@/components/HomePage";
+import { HomePage } from "@/components/HomePage";
 import Navbar from "@/components/Navbar";
+import { BlogPostData } from "../../data/data";
 
-
-export default function Home() {
+export const Home: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts }) => {
   return (
     <>
       <div className="relative z-50">
@@ -13,7 +13,7 @@ export default function Home() {
           <Navbar />
         </div>
       </div>
-      <HomePage />
+      <HomePage blogPosts={blogPosts} />
     </>
   );
 }

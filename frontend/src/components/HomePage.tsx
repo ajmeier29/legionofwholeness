@@ -1,9 +1,12 @@
-import BlogPostsDisplay from "./BlogPostsDisplay";
+import { BlogPostsDisplay } from "./BlogPostsDisplay";
 import ButtonBar from "./ButtonBar";
 import Hero from "./Hero";
+import { BlogPostData, getPosts } from '../../data/data';
+import type { InferGetStaticPropsType, GetStaticProps } from 'next'
 
 
-export default function HomePage() {
+export const HomePage: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts }) => {
+
     return (
         <>
             <div className="relative justify-center items-center mx-2 mt-2 drop-shadow-1xl">
@@ -14,7 +17,7 @@ export default function HomePage() {
                     <ButtonBar />
                 </div>
                 <div>
-                    <BlogPostsDisplay />
+                    <BlogPostsDisplay blogPosts={blogPosts} />
                 </div>
             </div>
         </>
