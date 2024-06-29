@@ -15,6 +15,7 @@ type BlogPostData =
         publish_date?: string,
         tags?: string[],
         name?: string,
+        description?: string,
         content?: Content[],
         status?: 'draft' | 'published',
         created_on?: CreatedOn,

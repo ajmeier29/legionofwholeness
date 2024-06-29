@@ -23,17 +23,13 @@ export const BlogPostsDisplay: React.FC<{ blogPosts: BlogPostData[] }> = ({ blog
     )
 }
 
-interface Props {
-    blogPosts: BlogPostData[]
-}
-
 const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
     return (
         <>
 
             {blogPosts ? (
                 <>
-                    {blogPosts.map(({ name, header_image_full, content, publish_date }) => {
+                    {blogPosts.map(({ name, header_image_full, description, publish_date }) => {
                         return (
                             <div key={name} className="rounded-lg p-3 w-full">
                                 <div className="relative">
@@ -52,7 +48,7 @@ const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
                                     {name}
                                 </h2>
                                 <div className="mb-2">
-                                    {content?.[0]?.value.substring(0, 100)}
+                                    {description}
                                 </div>
                                 <span className=" text-lg w-full">
                                     Read Post
