@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { BlogPostData, getPosts } from "../../data/data"
 import axios from "axios";
+import Link from "next/link";
 
 
 export const BlogPostsDisplay: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts }) => {
@@ -29,7 +30,7 @@ const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
 
             {blogPosts ? (
                 <>
-                    {blogPosts.map(({ name, header_image_full, description, publish_date }) => {
+                    {blogPosts.map(({ name, header_image_full, description, publish_date, ID }) => {
                         return (
                             <div key={name} className="rounded-lg p-3 w-full">
                                 <div className="relative">
@@ -50,10 +51,19 @@ const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
                                 <div className="mb-2">
                                     {description}
                                 </div>
-                                <span className=" text-lg w-full">
-                                    Read Post
-                                    <svg className="inline h-5 w-5 text-slate-700 right-9" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <line x1="17" y1="7" x2="7" y2="17" />  <polyline points="8 7 17 7 17 16" /></svg>
-                                </span>
+                                <Link
+                                    href={{
+                                        pathname: `/Home/${ID}`,
+                                        query: {
+                                            id: ID
+                                        }
+                                    }}
+                                >
+                                    <span className=" text-lg w-full">
+                                        Read Post
+                                        <svg className="inline h-5 w-5 text-slate-700 right-9" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <line x1="17" y1="7" x2="7" y2="17" />  <polyline points="8 7 17 7 17 16" /></svg>
+                                    </span>
+                                </Link>
                             </div>
                         )
                     })}
@@ -66,7 +76,6 @@ const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
                         </div>
                     </>
                 )}
-            =
         </>
     )
 }

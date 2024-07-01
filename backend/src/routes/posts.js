@@ -20,7 +20,7 @@ require("dotenv/config");
 const storage_1 = require("firebase-admin/storage");
 // src/routes/auth.js
 const posts = express_1.default.Router();
-// Define a route
+// Get all blog post data.
 posts.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const q = (0, firestore_1.query)((0, firestore_1.collection)(firebase_js_1.db, "blog"), (0, firestore_1.where)("status", "==", "published")); // Use the 'where' function here
@@ -30,6 +30,8 @@ posts.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         yield Promise.all(querySnapshot.docs.map((doc) => __awaiter(void 0, void 0, void 0, function* () {
             var _a;
             const data = doc.data();
+            // Add the ID
+            data.ID = doc.id;
             // Get the download URL
             const downloadUrl = yield (0, storage_1.getDownloadURL)(firebase_js_1.bucket.file((_a = data === null || data === void 0 ? void 0 : data.header_image) !== null && _a !== void 0 ? _a : ''));
             data.header_image_full = downloadUrl;
@@ -39,6 +41,34 @@ posts.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.send({
             'data': respData
         }); // This gets executed when the user visits http://localhost:3000/user
+    }
+    catch (err) {
+        console.error('Error getting document', err);
+        res.status(500).send('Internal server error');
+    }
+}));
+// get single blog post
+posts.get('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _b;
+    try {
+        const docRef = (0, firestore_1.doc)(firebase_js_1.db, "blog", req.params.id); // Reference the document by ID
+        const docSnapshot = yield (0, firestore_1.getDoc)(docRef); // Get the document snapshot
+        if (docSnapshot.exists()) {
+            const data = docSnapshot.data();
+            // Add the ID
+            data.ID = docSnapshot.id;
+            // Get the download URL
+            const downloadUrl = yield (0, storage_1.getDownloadURL)(firebase_js_1.bucket.file((_b = data === null || data === void 0 ? void 0 : data.header_image) !== null && _b !== void 0 ? _b : ''));
+            data.header_image_full = downloadUrl;
+            // Send the data in the response
+            res.send({
+                'data': data
+            });
+        }
+        else {
+            console.log('Document does not exist.');
+            res.status(404).send('Document not found');
+        }
     }
     catch (err) {
         console.error('Error getting document', err);

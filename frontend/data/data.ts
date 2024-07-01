@@ -12,6 +12,7 @@ type CreatedOn =
     }
 type BlogPostData =
     {
+        ID?: string,
         publish_date?: string,
         tags?: string[],
         name?: string,

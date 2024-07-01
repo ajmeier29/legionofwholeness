@@ -1,5 +1,5 @@
 // Firestore imports
-import { collection, getDocs, query as fireQuery, where, DocumentData } from "firebase/firestore"; // Import the 'where' function
+import { collection, getDocs, query as fireQuery, where, DocumentData, doc, getDoc } from "firebase/firestore"; // Import the 'where' function
 import { db, bucket } from '../firebase.js';
 import express, { response } from "express";
 import 'dotenv/config';
@@ -23,6 +23,7 @@ type CreatedOn =
     }
 type BlogPostData =
     {
+        ID?: string,
         publish_date?: string,
         tags?: string[],
         name?: string,
@@ -36,7 +37,7 @@ type BlogPostData =
         filePath?: string
     }
 
-// Define a route
+// Get all blog post data.
 posts.get('/', async (req, res) => {
     try {
         const q = fireQuery(collection(db, "blog"), where("status", "==", "published")); // Use the 'where' function here
@@ -46,6 +47,8 @@ posts.get('/', async (req, res) => {
         // Use Promise.all to wait for all async operations to complete
         await Promise.all(querySnapshot.docs.map(async (doc) => {
             const data: BlogPostData = doc.data();
+            // Add the ID
+            data.ID = doc.id;
             // Get the download URL
             const downloadUrl = await getDownloadURL(bucket.file(data?.header_image ?? ''));
             data.header_image_full = downloadUrl;
@@ -56,6 +59,33 @@ posts.get('/', async (req, res) => {
         res.send({
             'data': respData
         }); // This gets executed when the user visits http://localhost:3000/user
+    } catch (err) {
+        console.error('Error getting document', err);
+        res.status(500).send('Internal server error');
+    }
+});
+
+// get single blog post
+posts.get('/:id', async (req, res) => {
+    try {
+        const docRef = doc(db, "blog", req.params.id); // Reference the document by ID
+        const docSnapshot = await getDoc(docRef); // Get the document snapshot
+
+        if (docSnapshot.exists()) {
+            const data: BlogPostData = docSnapshot.data();
+            // Add the ID
+            data.ID = docSnapshot.id;
+            // Get the download URL
+            const downloadUrl = await getDownloadURL(bucket.file(data?.header_image ?? ''));
+            data.header_image_full = downloadUrl;
+            // Send the data in the response
+            res.send({
+                'data': data
+            });
+        } else {
+            console.log('Document does not exist.');
+            res.status(404).send('Document not found');
+        }
     } catch (err) {
         console.error('Error getting document', err);
         res.status(500).send('Internal server error');

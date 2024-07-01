@@ -1,4 +1,3 @@
-import BlogPostPage from "@/components/BlogPost";
 import { HomePage } from "@/components/HomePage";
 import Navbar from "@/components/Navbar";
 import { BlogPostData } from "../../../data/data";
