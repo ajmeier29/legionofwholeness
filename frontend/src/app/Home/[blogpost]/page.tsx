@@ -1,6 +1,5 @@
 
 'use client'
-
 import { useSearchParams } from 'next/navigation'
 import { BlogPostData } from '../../../../data/data';
 import Navbar from '@/components/Navbar';

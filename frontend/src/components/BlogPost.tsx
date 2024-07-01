@@ -1,5 +1,5 @@
 import { BlogPostData } from "../../data/data";
-import GradiantText from "./GradientText";
+import ReactMarkdown from 'react-markdown';
 
 
 export const BlogPostPage: React.FC<{ post: BlogPostData }> = ({ post: blogPostData }) => {
@@ -13,7 +13,9 @@ export const BlogPostPage: React.FC<{ post: BlogPostData }> = ({ post: blogPostD
                 </div>
             </div>
             <div className="ml-10 mr-10 md:ml-32 md:mr-32 lg:ml-52 lg:mr-52">
-                <div>{blogPostData?.content?.[0]?.value ?? 'No content available'}</div>
+                <ReactMarkdown>
+                    {blogPostData?.content?.[0]?.value ?? 'No content available'}
+                </ReactMarkdown>
             </div>
         </>
     )
