@@ -15,7 +15,7 @@ type BlogPostData =
         ID?: string,
         publish_date?: string,
         tags?: string[],
-        name?: string,
+        title?: string,
         description?: string,
         content?: Content[],
         status?: 'draft' | 'published',
@@ -25,6 +25,23 @@ type BlogPostData =
         reviewed?: boolean,
         filePath?: string
     }
+
+type BlogPostDataD =
+    {
+        ID?: string,
+        publish_date?: string,
+        tags?: string[],
+        title?: string,
+        description?: string,
+        content?: string,
+        status?: 'draft' | 'published',
+        created_on?: CreatedOn,
+        header_image?: string,
+        header_image_full?: string,
+        reviewed?: boolean,
+        filePath?: string
+    }
+
 
 // This function will fetch all of the data needed to show
 // the list of blog posts ohn the homepage. 
@@ -38,5 +55,5 @@ export const getPosts = async (): Promise<BlogPostData[]> => {
     }
 }
 
-export type { BlogPostData };
+export type { BlogPostData, BlogPostDataD };
 

@@ -30,7 +30,7 @@ const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
 
             {blogPosts ? (
                 <>
-                    {blogPosts.map(({ name, header_image_full, description, publish_date, ID }) => {
+                    {blogPosts.map(({ title: name, header_image_full, description, publish_date, ID }) => {
                         return (
                             <div key={name} className="rounded-lg p-3 w-full">
                                 <div className="relative">

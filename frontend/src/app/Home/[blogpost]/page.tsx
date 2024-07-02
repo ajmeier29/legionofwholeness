@@ -4,6 +4,8 @@ import { useSearchParams } from 'next/navigation'
 import { BlogPostData } from '../../../../data/data';
 import Navbar from '@/components/Navbar';
 import { BlogPostPage } from '@/components/BlogPost';
+import * as contentful from 'contentful';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 async function getData(id: string | null) {
     try {
@@ -26,6 +28,7 @@ export default async function Page({ params }: { params: { blogpost: string } })
     const searchParams = useSearchParams()
     const blogId = searchParams.get('id');
     var blogPostData: BlogPostData | null = {};
+
     await getData(blogId)
         .then((data) => {
             blogPostData = data;
