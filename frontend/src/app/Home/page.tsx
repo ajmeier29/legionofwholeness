@@ -35,7 +35,10 @@ export default async function Page() {
 
   var d;
 
-  client.getEntries()
+  client.getEntries({
+    content_type: 'blogPosts', // Replace with your actual content type ID
+    'fields.publish': true,
+  })
     .then((entries: any) => {
       // const allData = entry.items; // Replace 'body' with your rich text field name
       entries.items.forEach((entry: any) => {
@@ -44,7 +47,9 @@ export default async function Page() {
             ID: entry.sys.id,
             title: entry.fields.title,
             description: entry.fields.description.content[0].content[0].value,
-            content: documentToHtmlString(entry.fields.content)
+            content: documentToHtmlString(entry.fields.content),
+            imageUrl: 'https:' + entry.fields.image.fields.file.url,
+            created_on: entry.fields.createdOn
           }
         )
       });

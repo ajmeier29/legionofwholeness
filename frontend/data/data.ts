@@ -36,8 +36,7 @@ type BlogPostDataD =
         content?: string,
         status?: 'draft' | 'published',
         created_on?: CreatedOn,
-        header_image?: string,
-        header_image_full?: string,
+        imageUrl?: string,
         reviewed?: boolean,
         filePath?: string
     }
