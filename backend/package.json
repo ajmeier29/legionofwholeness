@@ -1,0 +1,25 @@
+{
+  "name": "loh-backend",
+  "version": "1.0.0",
+  "description": "The Legion Of Wholeness backend proxy",
+  "main": "index.js",
+  "scripts": {
+    "start:backend": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Meier",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase": "^10.12.2",
+    "firebase-admin": "^12.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "nodemon": "^3.1.4",
+    "typescript": "^5.5.2"
+  }
+}

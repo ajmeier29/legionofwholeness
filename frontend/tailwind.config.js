@@ -18,7 +18,9 @@ module.exports = {
       colors: {
         "primary": "#e3d5d5",
         "button-primary": "#F6E6CB",
-        "button-primary-hover": "#efd7b0"
+        "button-primary-hover": "#efd7b0",
+        "button-primary-disabled": "#e7dfd2",
+        "button-primary-txt-disabled": "#b2ada5"
       },
       fontSize: {
         "navbar-font-xl": "20px"

@@ -1,11 +1,9 @@
-import BlogPostPage from "@/components/BlogPost";
-import HomePage from "@/components/HomePage";
+import { HomePage } from "@/components/HomePage";
 import Navbar from "@/components/Navbar";
+import { BlogPostData } from "../../data/data";
 
-
-export default function Page() {
+export const Home: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts }) => {
   return (
-
     <>
       <div className="relative z-50">
         <div className='absolute top-6 left-8 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]'>
@@ -15,7 +13,7 @@ export default function Page() {
           <Navbar />
         </div>
       </div>
-      <HomePage />
+      <HomePage blogPosts={blogPosts} />
     </>
   );
 }

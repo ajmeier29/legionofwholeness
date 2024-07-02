@@ -16,7 +16,7 @@ export default function Hero() {
 
                     <button type="button" className="mt-5 px-3 py-3 bg-button-primary text-slate-800 rounded-md hover:bg-button-primary-hover relative items-end">
                         Subscribe
-                        <svg className="inline h-5 w-5 text-slate-600" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <polyline points="9 6 15 12 9 18" /></svg>
+                        <svg className="inline h-5 w-5 text-slate-600" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <polyline points="9 6 15 12 9 18" /></svg>
                     </button>
                 </div>
             </div>
