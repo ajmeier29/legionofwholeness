@@ -1,8 +1,24 @@
 import * as contentful from 'contentful';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { BlogPostData } from '../../data/data';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { ReactNode } from 'react';
+
+type BlogPostData =
+    {
+        ID?: string,
+        author?: string,
+        publish_date?: string,
+        tags?: string[],
+        title?: string,
+        description?: string,
+        content?: ReactNode,
+        status?: 'draft' | 'published',
+        created_on?: string,
+        imageUrl?: string,
+        reviewed?: boolean,
+        filePath?: string
+    }
 
 // Gets all of the blog posts from the blogPosts collection in contentful
 async function GetAllBlogPostData(): Promise<BlogPostData[]> {
@@ -24,6 +40,7 @@ async function GetAllBlogPostData(): Promise<BlogPostData[]> {
                 blogs?.push(
                     {
                         ID: entry.sys.id,
+                        author: entry.fields.author,
                         title: entry.fields.title,
                         description: entry.fields.description.content[0].content[0].value,
                         content: documentToHtmlString(entry.fields.content),
@@ -54,12 +71,13 @@ async function GetBlogPostData(id: string | null): Promise<BlogPostData> {
         environment: 'master', // defaults to 'master' if not set
         accessToken: process?.env?.NEXT_PUBLIC_ACCESS_TOKEN || ''
     })
-    console.log(`id: ${id}`)
+    //console.log(`id: ${id}`)
     await client.getEntry(id ?? '')
         .then((entry: any) => {
-            console.log(`Entry: ${JSON.stringify(entry)}`)
+            //console.log(`Entry: ${JSON.stringify(entry)}`)
             blogData = {
                 ID: entry.sys.id,
+                author: entry.fields.author,
                 title: entry.fields.title,
                 description: entry.fields.description.content[0].content[0].value,
                 content: documentToReactComponents(entry.fields.content),
@@ -74,3 +92,4 @@ async function GetBlogPostData(id: string | null): Promise<BlogPostData> {
 }
 
 export { GetAllBlogPostData, GetBlogPostData }
+export type { BlogPostData };

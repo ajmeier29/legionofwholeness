@@ -1,12 +1,9 @@
 
 'use client'
 import { useSearchParams } from 'next/navigation'
-import { BlogPostData } from '../../../../data/data';
 import Navbar from '@/components/Navbar';
 import { BlogPostPage } from '@/components/BlogPost';
-import * as contentful from 'contentful';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { GetBlogPostData } from '@/data/data';
+import { BlogPostData, GetBlogPostData } from '@/data/data';
 
 async function getData(id: string | null) {
     try {
@@ -36,7 +33,7 @@ export default async function Page({ params }: { params: { blogpost: string } })
             blogPostData = blogPost
         })
         .catch((error) => {
-            console.log(`Error: ${error}`)
+            //console.log(`Error: ${error}`)
         })
 
     return (

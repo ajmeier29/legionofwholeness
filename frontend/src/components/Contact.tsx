@@ -12,7 +12,7 @@ export default function Contact() {
 
     async function onChange(value: any) {
         // verify captcha
-        console.log('called on change');
+        //('called on change');
     }
 
     return (

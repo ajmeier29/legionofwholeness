@@ -1,8 +1,7 @@
+import { BlogPostData } from "@/data/data";
 import { BlogPostsDisplay } from "./BlogPostsDisplay";
 import ButtonBar from "./ButtonBar";
 import Hero from "./Hero";
-import { BlogPostData, getPosts } from '../../data/data';
-import type { InferGetStaticPropsType, GetStaticProps } from 'next'
 
 
 export const HomePage: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts }) => {

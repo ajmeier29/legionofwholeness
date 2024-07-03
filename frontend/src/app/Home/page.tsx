@@ -1,7 +1,6 @@
 import { HomePage } from "@/components/HomePage";
 import Navbar from "@/components/Navbar";
-import { BlogPostData } from "../../../data/data";
-import { GetAllBlogPostData } from "@/data/data";
+import { BlogPostData, GetAllBlogPostData } from "@/data/data";
 
 
 export default async function Page() {
@@ -11,7 +10,7 @@ export default async function Page() {
       blogs = blogData;
     })
     .catch((error) => {
-      console.log(`Error: ${error}`)
+      //console.log(`Error: ${error}`)
     });
 
   return (
