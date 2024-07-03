@@ -13,10 +13,11 @@ export const BlogPostsDisplay: React.FC<{ blogPosts: BlogPostData[] }> = ({ blog
                 {blogPosts ? (
                     <>
                         <BlogPostTile blogPosts={blogPosts} />
+                        {/* <div>{blogPosts[0]?.ID ?? 'not there'}</div> */}
                     </>
                 ) : (
                     <>
-                        <div className="font-2xl">nothin!</div>
+                        <div className="font-2xl">Nothin!</div>
                     </>
                 )}
             </div>
@@ -30,12 +31,12 @@ const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
 
             {blogPosts ? (
                 <>
-                    {blogPosts.map(({ title: name, header_image_full, description, publish_date, ID }) => {
+                    {blogPosts.map(({ title: name, imageUrl, description, publish_date, ID }) => {
                         return (
                             <div key={name} className="rounded-lg p-3 w-full">
                                 <div className="relative">
-                                    <img className='object-cover w-full justify-center rounded-lg' src={header_image_full} />
-                                    <img className='absolute blur-sm object-cover h-[25%] object-bottom w-full justify-center rounded-lg bottom-0 left-0 z-20' src={header_image_full} />
+                                    <img className='object-cover w-full justify-center rounded-lg' src={imageUrl} />
+                                    <img className='absolute blur-sm object-cover h-[25%] object-bottom w-full justify-center rounded-lg bottom-0 left-0 z-20' src={imageUrl} />
                                     <div className="absolute bottom-3 sm:bottom-9 md:bottom-3 lg:bottom-7 left-2 ml-3 w-full z-30">
                                         <h3 className="text-white text-xs sm:text-xl md:text-lg lg:text-lg font-normal">
                                             {'Justin B.'}

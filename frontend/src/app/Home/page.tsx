@@ -1,82 +1,19 @@
 import { HomePage } from "@/components/HomePage";
 import Navbar from "@/components/Navbar";
-import { BlogPostData, BlogPostDataD } from "../../../data/data";
-import * as contentful from 'contentful';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-
-async function getData() {
-  try {
-    const res = await fetch(process?.env?.NEXT_PUBLIC_POSTS_URL || '');
-
-    if (!res.ok) {
-      throw new Error('Failed to fetch data');
-    }
-
-    const data = await res.json(); // Parse the response as JSON
-    // need to return .data until the json schema changes in /posts on the backend. 
-    return data.data;
-  } catch (error) {
-    //console.error('Error fetching data:', error);
-    return null; // Return a fallback value (e.g., empty array) or handle the error differently
-  }
-}
+import { BlogPostData } from "../../../data/data";
+import GetBlogPostData from "@/data/data";
 
 
 export default async function Page() {
-  var blogs: BlogPostData[] | null = [];
-  var blogsNew: BlogPostDataD[] | null = [];
-  var blog: BlogPostData | null = {};
-
-  const client = contentful.createClient({
-    space: process?.env?.NEXT_PUBLIC_SPACE || '',
-    environment: 'master', // defaults to 'master' if not set
-    accessToken: process?.env?.NEXT_PUBLIC_ACCESS_TOKEN || ''
-  })
-
-  var d;
-
-  client.getEntries({
-    content_type: 'blogPosts', // Replace with your actual content type ID
-    'fields.publish': true,
-  })
-    .then((entries: any) => {
-      // const allData = entry.items; // Replace 'body' with your rich text field name
-      entries.items.forEach((entry: any) => {
-        blogsNew?.push(
-          {
-            ID: entry.sys.id,
-            title: entry.fields.title,
-            description: entry.fields.description.content[0].content[0].value,
-            content: documentToHtmlString(entry.fields.content),
-            imageUrl: 'https:' + entry.fields.image.fields.file.url,
-            created_on: entry.fields.createdOn
-          }
-        )
-      });
-
-
-      //const richTextContent = entry.fields.content;
-      console.log(`allData: ${JSON.stringify(blogsNew)}`)
-      // console.log(`rawRichTextFieldss: ${JSON.stringify(allData)}`)
-      // console.log(`documentToHtmlString(rawRichTextFieldss): ${documentToHtmlString(richTextContent)}`)
-      // return documentToHtmlString(richTextContent);
-      return null;
-    })
-    .then((renderedHtml) => {
-      // Do something with the HTML, like displaying it on a webpage
-      //console.log(`renderedHtml: '${renderedHtml}'`);
-    })
-    .catch((error) => console.log(error));
-
-
-
-  await getData()
-    .then((data) => {
-      blogs = data;
+  var blogs: BlogPostData[] = [];
+  await GetBlogPostData()
+    .then((blogData) => {
+      blogs = blogData;
     })
     .catch((error) => {
-      throw new Error(error.message);
+      console.log(`Error: ${error}`)
     });
+
   return (
     <>
       <div className="relative z-50">

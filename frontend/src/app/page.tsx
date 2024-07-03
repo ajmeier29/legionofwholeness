@@ -1,8 +1,18 @@
 import { HomePage } from "@/components/HomePage";
 import Navbar from "@/components/Navbar";
 import { BlogPostData } from "../../data/data";
+import GetBlogPostData from "@/data/data";
 
-export const Home: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts }) => {
+export default async function Home() {
+  var blogs: BlogPostData[] = [];
+  await GetBlogPostData()
+    .then((blogData) => {
+      blogs = blogData;
+    })
+    .catch((error) => {
+      console.log(`Error: ${error}`)
+    });
+
   return (
     <>
       <div className="relative z-50">
@@ -13,7 +23,7 @@ export const Home: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts }) => 
           <Navbar />
         </div>
       </div>
-      <HomePage blogPosts={blogPosts} />
+      <HomePage blogPosts={blogs} />
     </>
   );
 }

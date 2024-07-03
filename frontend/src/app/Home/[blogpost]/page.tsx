@@ -29,13 +29,13 @@ export default async function Page({ params }: { params: { blogpost: string } })
     const blogId = searchParams.get('id');
     var blogPostData: BlogPostData | null = {};
 
-    await getData(blogId)
-        .then((data) => {
-            blogPostData = data;
-        })
-        .catch((error) => {
-            throw new Error(error.message);
-        });
+    // await getData(blogId)
+    //     .then((data) => {
+    //         blogPostData = data;
+    //     })
+    //     .catch((error) => {
+    //         throw new Error(error.message);
+    //     });
 
     return (
         <>

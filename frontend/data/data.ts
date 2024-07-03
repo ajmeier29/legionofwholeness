@@ -1,32 +1,32 @@
 import axios from 'axios';
 
-type Content =
-    {
-        value: string;
-        type: string;
-    }
-type CreatedOn =
-    {
-        seconds: number;
-        nanoseconds: number
-    }
-type BlogPostData =
-    {
-        ID?: string,
-        publish_date?: string,
-        tags?: string[],
-        title?: string,
-        description?: string,
-        content?: Content[],
-        status?: 'draft' | 'published',
-        created_on?: CreatedOn,
-        header_image?: string,
-        header_image_full?: string,
-        reviewed?: boolean,
-        filePath?: string
-    }
+// type Content =
+//     {
+//         value: string;
+//         type: string;
+//     }
+// type CreatedOn =
+//     {
+//         seconds: number;
+//         nanoseconds: number
+//     }
+// type BlogPostData =
+//     {
+//         ID?: string,
+//         publish_date?: string,
+//         tags?: string[],
+//         title?: string,
+//         description?: string,
+//         content?: Content[],
+//         status?: 'draft' | 'published',
+//         created_on?: CreatedOn,
+//         header_image?: string,
+//         header_image_full?: string,
+//         reviewed?: boolean,
+//         filePath?: string
+//     }
 
-type BlogPostDataD =
+type BlogPostData =
     {
         ID?: string,
         publish_date?: string,
@@ -35,7 +35,7 @@ type BlogPostDataD =
         description?: string,
         content?: string,
         status?: 'draft' | 'published',
-        created_on?: CreatedOn,
+        created_on?: string,
         imageUrl?: string,
         reviewed?: boolean,
         filePath?: string
@@ -54,5 +54,5 @@ export const getPosts = async (): Promise<BlogPostData[]> => {
     }
 }
 
-export type { BlogPostData, BlogPostDataD };
+export type { BlogPostData };
 
