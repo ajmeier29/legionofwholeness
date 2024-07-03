@@ -13,7 +13,6 @@ export const BlogPostsDisplay: React.FC<{ blogPosts: BlogPostData[] }> = ({ blog
                 {blogPosts ? (
                     <>
                         <BlogPostTile blogPosts={blogPosts} />
-                        {/* <div>{blogPosts[0]?.ID ?? 'not there'}</div> */}
                     </>
                 ) : (
                     <>

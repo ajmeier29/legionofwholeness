@@ -32,7 +32,7 @@ export default async function Page({ params }: { params: { blogpost: string } })
 
     await GetBlogPostData(blogId)
         .then((blogPost) => {
-            console.log(`BlogPostId: ${blogId} | BlogPostDat: ${JSON.stringify(blogPost)}`)
+            //console.log(`BlogPostId: ${blogId} | BlogPostDat: ${JSON.stringify(blogPost)}`)
             blogPostData = blogPost
         })
         .catch((error) => {

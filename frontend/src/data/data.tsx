@@ -1,6 +1,8 @@
 import * as contentful from 'contentful';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { BlogPostData } from '../../data/data';
+import { BLOCKS } from '@contentful/rich-text-types';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 // Gets all of the blog posts from the blogPosts collection in contentful
 async function GetAllBlogPostData(): Promise<BlogPostData[]> {
@@ -37,6 +39,12 @@ async function GetAllBlogPostData(): Promise<BlogPostData[]> {
     return blogs;
 }
 
+const options = {
+    renderNode: {
+        [BLOCKS.HEADING_1]: (node: any, children: any) => `<article className="prose prose-2xl">${children}}</article>`
+    }
+}
+
 // Get a single blog posts data by the id
 async function GetBlogPostData(id: string | null): Promise<BlogPostData> {
     var blogData: BlogPostData | null = {};
@@ -54,7 +62,7 @@ async function GetBlogPostData(id: string | null): Promise<BlogPostData> {
                 ID: entry.sys.id,
                 title: entry.fields.title,
                 description: entry.fields.description.content[0].content[0].value,
-                content: documentToHtmlString(entry.fields.content),
+                content: documentToReactComponents(entry.fields.content),
                 imageUrl: 'https:' + entry.fields.image.fields.file.url,
                 created_on: entry.fields.createdOn
             }

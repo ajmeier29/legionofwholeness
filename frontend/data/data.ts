@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ReactNode } from 'react';
 
 // type Content =
 //     {
@@ -33,7 +34,7 @@ type BlogPostData =
         tags?: string[],
         title?: string,
         description?: string,
-        content?: string,
+        content?: ReactNode,
         status?: 'draft' | 'published',
         created_on?: string,
         imageUrl?: string,

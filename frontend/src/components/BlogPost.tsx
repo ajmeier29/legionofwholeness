@@ -13,9 +13,12 @@ export const BlogPostPage: React.FC<{ post: BlogPostData }> = ({ post: blogPostD
                 </div>
             </div>
             <div className="ml-10 mr-10 md:ml-32 md:mr-32 lg:ml-52 lg:mr-52">
-                <ReactMarkdown>
+                {/* <ReactMarkdown>
                     {blogPostData?.content ?? 'No content available'}
-                </ReactMarkdown>
+                </ReactMarkdown> */}
+                <article className="prose lg:prose-xl">
+                    {blogPostData?.content}
+                </article>
             </div>
         </>
     )
