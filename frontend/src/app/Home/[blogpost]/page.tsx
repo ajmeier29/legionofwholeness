@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import { BlogPostPage } from '@/components/BlogPost';
 import * as contentful from 'contentful';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { GetBlogPostData } from '@/data/data';
 
 async function getData(id: string | null) {
     try {
@@ -29,13 +30,14 @@ export default async function Page({ params }: { params: { blogpost: string } })
     const blogId = searchParams.get('id');
     var blogPostData: BlogPostData | null = {};
 
-    // await getData(blogId)
-    //     .then((data) => {
-    //         blogPostData = data;
-    //     })
-    //     .catch((error) => {
-    //         throw new Error(error.message);
-    //     });
+    await GetBlogPostData(blogId)
+        .then((blogPost) => {
+            console.log(`BlogPostId: ${blogId} | BlogPostDat: ${JSON.stringify(blogPost)}`)
+            blogPostData = blogPost
+        })
+        .catch((error) => {
+            console.log(`Error: ${error}`)
+        })
 
     return (
         <>

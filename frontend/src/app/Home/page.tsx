@@ -1,12 +1,12 @@
 import { HomePage } from "@/components/HomePage";
 import Navbar from "@/components/Navbar";
 import { BlogPostData } from "../../../data/data";
-import GetBlogPostData from "@/data/data";
+import { GetAllBlogPostData } from "@/data/data";
 
 
 export default async function Page() {
   var blogs: BlogPostData[] = [];
-  await GetBlogPostData()
+  await GetAllBlogPostData()
     .then((blogData) => {
       blogs = blogData;
     })
