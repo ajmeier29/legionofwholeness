@@ -83,7 +83,7 @@ posts.get('/:id', async (req, res) => {
                 'data': data
             });
         } else {
-            console.log('Document does not exist.');
+            //console.log('Document does not exist.');
             res.status(404).send('Document not found');
         }
     } catch (err) {

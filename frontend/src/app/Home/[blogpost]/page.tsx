@@ -5,23 +5,6 @@ import Navbar from '@/components/Navbar';
 import { BlogPostPage } from '@/components/BlogPost';
 import { BlogPostData, GetBlogPostData } from '@/data/data';
 
-async function getData(id: string | null) {
-    try {
-        const res = await fetch(`${process?.env?.NEXT_PUBLIC_POSTS_URL}/${id}` || '');
-
-        if (!res.ok) {
-            throw new Error('Failed to fetch data');
-        }
-
-        const data = await res.json(); // Parse the response as JSON
-        // need to return .data until the json schema changes in /posts on the backend. 
-        return data.data;
-    } catch (error) {
-        //console.error('Error fetching data:', error);
-        return null; // Return a fallback value (e.g., empty array) or handle the error differently
-    }
-}
-
 export default async function Page({ params }: { params: { blogpost: string } }) {
     const searchParams = useSearchParams()
     const blogId = searchParams.get('id');
