@@ -104,7 +104,7 @@ export default function Contact() {
     return (
         <>
             <div className="min-h-screen flex items-center justify-center">
-                <div className="relative grid grid-cols-1 content-center bg-hero-image-mobile md:bg-hero-image bg-cover bg-bottom h-[700px] my-4 mx-3 md:mx-32 xl:mx-56 rounded-lg overflow-hidden">
+                <div className="relative grid grid-cols-1 content-center bg-hero-image-mobile bg-cover bg-bottom h-[700px] my-4 mx-3 md:mx-32 xl:mx-56 rounded-lg overflow-hidden">
                     <div className="absolute left-2 top-2 z-50">
                         <div className='drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]'>
                             <Rune />
