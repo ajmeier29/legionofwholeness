@@ -1,5 +1,3 @@
-import GradiantText from './GradientText';
-
 
 type HeroProps =
     {

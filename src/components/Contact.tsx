@@ -1,11 +1,9 @@
 'use client'
-import React, { ReactNode, useEffect, useState } from "react";
-import GradiantText from "./GradientText";
+import React, { useEffect, useState } from "react";
 import ReCAPTCHA from 'react-google-recaptcha';
-import Link from "next/link";
 import emailjs from '@emailjs/browser';
 import { SubmitHandler, useForm } from "react-hook-form"
-import Rune from "./Rune";
+import Navbar from "./Navbar";
 
 
 export default function Contact() {
@@ -104,23 +102,16 @@ export default function Contact() {
     return (
         <>
             <div className="min-h-screen flex items-center justify-center">
-                <div className="relative grid grid-cols-1 content-center bg-hero-image-mobile bg-cover bg-bottom h-[700px] my-4 mx-3 md:mx-32 xl:mx-56 rounded-lg overflow-hidden">
-                    <div className="absolute left-2 top-2 z-50">
-                        <div className='drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]'>
-                            <Rune />
-                        </div>
+                <div className="relative grid grid-cols-1 content-center bg-hero-image-mobile bg-cover bg-bottom h-[700px] my-2 mx-3 md:mx-32 xl:mx-56 rounded-lg overflow-hidden">
+                    <div className="relative z-50 flex items-center justify-center">
+                        <Navbar marginTop="mt-0" />
                     </div>
-                    <div className='absolute top-4 right-0'>
-                        <ContactNavbar />
-                    </div>
-                    <div className="relative bg-black/40 p-5 backdrop-blur-sm grid grid-cols-1 mx-7 md:mx-32 xl:mx-56  justify-center justify-items-center rounded-lg overflow-hidden">
+                    <div className="relative bg-black/40 mt-7 p-5 backdrop-blur-sm grid grid-cols-1 mx-7 md:mx-32 xl:mx-56  justify-center justify-items-center rounded-lg overflow-hidden">
                         <div>
                             <h2 className='text-[20px] md:text-[40px] font-light text-primary block relative top-3'>LEGION OF&nbsp;</h2>
                         </div>
                         <div>
-                            <GradiantText
-                                text='WHOLENESS'
-                                options='relative bg-hero-gradient text-[25px] md:text-[55px] font-extrabold inline text-transparent bg-clip-text' />
+                            <h2 className='bg-hero-gradient text-[40px] md:text-[55px] font-extrabold inline text-transparent bg-clip-text'>WHOLENESS</h2>
                         </div>
                         <div className="text-center">
                             <p className='text-primary text-sm'>Contact me for a conslutation today.</p>
@@ -185,36 +176,3 @@ const LoadingCircles = () => {
         </>
     )
 }
-
-const ContactNavbar = () => {
-    return (
-        <>
-            <div className="flex flex-row justify-between text-white">
-                <NavBarOption link='/Home'>
-                    HOME
-                </NavBarOption>
-                <NavBarOption link='#'>
-                    BLOG
-                </NavBarOption>
-                <NavBarOption link='/Contact'>
-                    CONTACT
-                </NavBarOption>
-            </div>
-        </>
-    )
-}
-
-interface Props {
-    children: ReactNode;
-    link: string;
-}
-
-const NavBarOption: React.FC<Props> = ({ children, link }) => {
-    return (
-        <Link href={link}>
-            <span className="mr-5 text-button-primary rounded-xl backdrop-blur-sm text-navbar-font-xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-                {children}
-            </span>
-        </Link>
-    );
-};

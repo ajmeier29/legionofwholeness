@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import { BlogPostPage } from '@/components/BlogPost';
 import { BlogPostData, GetBlogPostData } from '@/data/data';
 import Rune from '@/components/Rune';
+import Header from '@/components/Header';
 
 export default async function Page({ params }: { params: { blogpost: string } }) {
     const searchParams = useSearchParams()
@@ -22,14 +23,7 @@ export default async function Page({ params }: { params: { blogpost: string } })
 
     return (
         <>
-            <div className="relative z-50">
-                <div className='absolute top-6 left-8 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]'>
-                    <Rune />
-                </div>
-                <div className='absolute top-4 right-2'>
-                    <Navbar />
-                </div>
-            </div>
+            <Header />
             <BlogPostPage post={blogPostData} />
         </>
     )
