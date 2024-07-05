@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@contentful/rich-text-html-renderer": "^16.6.1",
+    "@contentful/rich-text-plain-text-renderer": "^16.2.1",
+    "@contentful/rich-text-react-renderer": "^15.22.1",
     "axios": "^1.7.2",
+    "contentful": "^10.12.4",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
@@ -17,6 +21,7 @@
     "react-markdown": "^9.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

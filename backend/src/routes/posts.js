@@ -66,7 +66,7 @@ posts.get('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             });
         }
         else {
-            console.log('Document does not exist.');
+            //console.log('Document does not exist.');
             res.status(404).send('Document not found');
         }
     }
