@@ -1,7 +1,4 @@
-import Link from 'next/link';
 import GradiantText from './GradientText';
-import Navbar from './Navbar';
-import SubscribeButton from './SubscribeButton';
 
 export default function Hero() {
     return (
