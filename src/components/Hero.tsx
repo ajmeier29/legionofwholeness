@@ -5,11 +5,10 @@ export default function Hero() {
         <>
             <div className="absolute bottom-6 md:bottom-20 left-7 md:left-12">
                 <div className='w-full'>
-                    <h2 className='text-[40px] font-light text-primary inline'>LEGION OF&nbsp;</h2>
-                    <GradiantText
-                        text='WHOLENESS'
-                        options='bg-hero-gradient text-[45px] md:text-[55px] font-extrabold inline text-transparent bg-clip-text' />
-                    <p className='text-primary text-[17px]'>Helping others to find their strength through remembering their true self.</p>
+                    <h2 className='text-[30px] md:text-[40px] font-light text-primary inline'>LEGION OF&nbsp;</h2>
+                    <h2 className='bg-hero-gradient text-[40px] md:text-[55px] font-extrabold inline text-transparent bg-clip-text'>WHOLENESS</h2>
+
+                    <p className='text-primary text-[14px] md:text-[17px]'>Helping others to find their strength through remembering their true self.</p>
 
                     <button type="button" className="mt-5 px-3 py-3 bg-button-primary text-slate-800 rounded-md hover:bg-button-primary-hover relative items-end">
                         Subscribe
