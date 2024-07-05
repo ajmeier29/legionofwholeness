@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         //'hero-image': "url('/images/beachSunset.jpg')",
-        'hero-image': "url('/images/blue-breakthrough-over-mountains.jpg')",
+        'hero-image': "url('/images/blue-breakthrough-over-mountains.webp')",
         'hero-gradient':
           "linear-gradient(100deg, rgba(246,230,203,1) 0%, rgba(160,147,125,1) 31%, rgba(160,147,125,1) 76%, rgba(246,230,203,1) 100%)",
         'hero-gradient-background':
