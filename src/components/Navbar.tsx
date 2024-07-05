@@ -9,7 +9,7 @@ export default function Navbar() {
                 <NavBarOption link='/Home'>
                     HOME
                 </NavBarOption>
-                <NavBarOption link='#'>
+                <NavBarOption link='/BlogPosts'>
                     BLOG
                 </NavBarOption>
                 <NavBarOption link='/Contact'>
