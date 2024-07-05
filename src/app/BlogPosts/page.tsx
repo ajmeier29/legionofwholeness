@@ -1,9 +1,6 @@
 import { BlogPostsDisplay } from "@/components/BlogPostsDisplay";
-import ButtonBar from "@/components/ButtonBar";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
-import Rune from "@/components/Rune";
 import { BlogPostData, GetAllBlogPostData } from "@/data/data";
 
 

@@ -1,10 +1,8 @@
 
 'use client'
 import { useSearchParams } from 'next/navigation'
-import Navbar from '@/components/Navbar';
 import { BlogPostPage } from '@/components/BlogPost';
 import { BlogPostData, GetBlogPostData } from '@/data/data';
-import Rune from '@/components/Rune';
 import Header from '@/components/Header';
 
 export default async function Page({ params }: { params: { blogpost: string } }) {
