@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link";
 import { BlogPostData } from "@/data/data";
+import PreloadImage from "./PreloadImage";
 
 
 export const BlogPostsDisplay: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts }) => {
@@ -32,8 +33,8 @@ const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
                         return (
                             <div key={title} className="rounded-lg p-3 w-full">
                                 <div className="relative">
-                                    <img className='object-cover w-full justify-center rounded-lg' src={imageUrl} />
-                                    <img className='absolute blur-sm object-cover h-[25%] object-bottom w-full justify-center rounded-lg bottom-0 left-0 z-20' src={imageUrl} />
+                                    <PreloadImage imgSrc={imageUrl} styleProps="object-cover w-full justify-center rounded-lg" />
+                                    <PreloadImage imgSrc={imageUrl} styleProps="absolute blur-sm object-cover h-[25%] object-bottom w-full justify-center rounded-lg bottom-0 left-0 z-20" />
                                     <div className="absolute bottom-3 sm:bottom-9 md:bottom-3 lg:bottom-7 left-2 ml-3 w-full z-30">
                                         <h3 className="text-white text-xs sm:text-xl md:text-lg lg:text-lg font-normal">
                                             {author}
