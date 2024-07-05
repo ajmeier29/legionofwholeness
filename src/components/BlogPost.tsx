@@ -12,7 +12,8 @@ export const BlogPostPage: React.FC<{ post: BlogPostData }> = ({ post: blogPostD
                     <h2 className='text-md sm:text-3xl lg-text-[40px] font-normal text-primary inline drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]'>{blogPostData.title}&nbsp;</h2>
                 </div>
             </div>
-            <div className="ml-10 mr-10 md:ml-32 md:mr-32 lg:ml-52 lg:mr-52">
+            {/* <div className="ml-10 mr-10 md:ml-32 md:mr-32 lg:ml-52 lg:mr-52">  */}
+            <div className="ml-10 mr-10 md:flex md:justify-center">
                 <article className="prose">
                     {blogPostData?.content}
                 </article>
