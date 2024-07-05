@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation'
 import Navbar from '@/components/Navbar';
 import { BlogPostPage } from '@/components/BlogPost';
 import { BlogPostData, GetBlogPostData } from '@/data/data';
+import Rune from '@/components/Rune';
 
 export default async function Page({ params }: { params: { blogpost: string } }) {
     const searchParams = useSearchParams()
@@ -23,7 +24,7 @@ export default async function Page({ params }: { params: { blogpost: string } })
         <>
             <div className="relative z-50">
                 <div className='absolute top-6 left-8 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]'>
-                    <img className='h-20 w-15' src="/images/sowilo_rune_2.png" />
+                    <Rune />
                 </div>
                 <div className='absolute top-4 right-2'>
                     <Navbar />
