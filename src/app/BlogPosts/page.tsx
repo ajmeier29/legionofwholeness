@@ -27,7 +27,7 @@ export default async function Page() {
                 </div>
             </div>
             <div className="relative justify-center items-center mx-2 mt-2 drop-shadow-1xl">
-                <div className="relative bg-hero-image bg-cover bg-bottom h-[400px] w-full rounded-lg overflow-hidden">
+                <div className="relative bg-hero-image-mobile md:bg-hero-image bg-cover bg-bottom h-[400px] w-full rounded-lg overflow-hidden">
                     <Hero subscribe={false} />
                 </div>
                 <div>
