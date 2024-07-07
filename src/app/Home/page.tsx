@@ -1,7 +1,5 @@
 import Header from "@/components/Header";
 import { HomePage } from "@/components/HomePage";
-import Navbar from "@/components/Navbar";
-import Rune from "@/components/Rune";
 import { BlogPostData, GetAllBlogPostData } from "@/data/data";
 
 

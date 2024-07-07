@@ -2,7 +2,9 @@
 import Link from "next/link";
 import { BlogPostData } from "@/data/data";
 import PreloadImage from "./PreloadImage";
-
+import AOS from 'aos';
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 export const BlogPostsDisplay: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts }) => {
 
@@ -24,6 +26,12 @@ export const BlogPostsDisplay: React.FC<{ blogPosts: BlogPostData[] }> = ({ blog
 }
 
 const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
+
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+    }, []);
+
     return (
         <>
 
@@ -31,7 +39,12 @@ const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
                 <>
                     {blogPosts.map(({ title, author, imageUrl, description, publish_date, ID }) => {
                         return (
-                            <div key={title} className="rounded-lg p-3 w-full transition duration-300 ease-in-out hover:ease-in-out">
+                            <div
+                                data-aos="fade-up"
+                                data-aos-delay="50"
+                                data-aos-duration="500"
+                                key={title}
+                                className="rounded-lg p-3 w-full ease-out duration-1000 delay-1000">
                                 <Link
                                     href={{
                                         pathname: `/Home/${ID}`,

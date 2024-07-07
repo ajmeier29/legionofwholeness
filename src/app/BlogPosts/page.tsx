@@ -1,9 +1,6 @@
 import { BlogPostsDisplay } from "@/components/BlogPostsDisplay";
-import ButtonBar from "@/components/ButtonBar";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
-import Rune from "@/components/Rune";
 import { BlogPostData, GetAllBlogPostData } from "@/data/data";
 
 
@@ -21,7 +18,7 @@ export default async function Page() {
         <>
             <Header />
             <div className="relative justify-center items-center mx-2 mt-2 drop-shadow-1xl">
-                <div className="relative bg-hero-image-mobile bg-cover bg-bottom h-[400px] w-full rounded-lg overflow-hidden">
+                <div className="relative bg-hero-image-mobile bg-cover bg-bottom h-[400px] w-full rounded-lg overflow-hidden slideUpFromBottomFast">
                     <Hero subscribe={false} />
                 </div>
                 <div>
