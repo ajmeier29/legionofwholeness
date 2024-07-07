@@ -61,7 +61,6 @@ export default function Contact() {
     } = useForm<FormData>()
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
-        g
         if (!captchaPass) {
             // toast({
             //     title: 'Unable to submit.',

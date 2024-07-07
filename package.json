@@ -12,7 +12,7 @@
     "@contentful/rich-text-html-renderer": "^16.6.1",
     "@contentful/rich-text-react-renderer": "^15.22.1",
     "@emailjs/browser": "^4.3.3",
-    "aos": "^3.0.0-beta.6",
+    "aos": "^2.3.4",
     "contentful": "^10.12.4",
     "next": "14.2.4",
     "react": "^18",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.13",
+    "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
