@@ -11,7 +11,7 @@ export default function Navbar({ marginTop = 'mt-20' }: NavBarProps) {
         <>
             <div className={`absolute ${marginTop}`}>
                 <div className="flex flex-row justify-between text-white">
-                    <NavBarOption link='/Home'>
+                    <NavBarOption link='/'>
                         HOME
                     </NavBarOption>
                     <NavBarOption link='/BlogPosts'>
