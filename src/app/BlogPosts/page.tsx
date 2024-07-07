@@ -1,4 +1,5 @@
 import { BlogPostsDisplay } from "@/components/BlogPostsDisplay";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import { BlogPostData, GetAllBlogPostData } from "@/data/data";
@@ -23,6 +24,9 @@ export default async function Page() {
                 </div>
                 <div>
                     <BlogPostsDisplay blogPosts={blogs} />
+                </div>
+                <div>
+                    <Footer />
                 </div>
             </div>
         </>

@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation'
 import { BlogPostPage } from '@/components/BlogPost';
 import { BlogPostData, GetBlogPostData } from '@/data/data';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default async function Page({ params }: { params: { blogpost: string } }) {
     const searchParams = useSearchParams()
@@ -23,6 +24,7 @@ export default async function Page({ params }: { params: { blogpost: string } })
         <>
             <Header />
             <BlogPostPage post={blogPostData} />
+            <Footer />
         </>
     )
 }
