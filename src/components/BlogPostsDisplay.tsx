@@ -31,7 +31,7 @@ const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
                 <>
                     {blogPosts.map(({ title, author, imageUrl, description, publish_date, ID }) => {
                         return (
-                            <div key={title} className="rounded-lg p-3 w-full transition duration-300 ease-in-out hover:ease-in-out">
+                            <div key={title} className="rounded-lg p-3 w-full ease-out duration-1000 delay-1000 slideUpFromBottomSlow">
                                 <Link
                                     href={{
                                         pathname: `/Home/${ID}`,
