@@ -1,9 +1,22 @@
-
+'use client'
+import AOS from 'aos';
+import "aos/dist/aos.css";
+import { useEffect } from 'react';
 
 export default function Footer() {
+
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+    }, []);
+
     return (
         <>
-            <section className="pt-16 pb-7 ">
+            <section
+                data-aos="fade-up"
+                data-aos-delay="50"
+                data-aos-duration="500"
+                className="pt-16 pb-7 ">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col min-[830px]:flex-row items-center justify-between gap-6 pb-10 border-b-2 border-gray-600">
                         <div className="max-sm:flex max-sm:flex-col max-sm:items-center">
