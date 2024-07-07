@@ -47,7 +47,7 @@ const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
                                 className="rounded-lg p-3 w-full ease-out duration-1000 delay-1000">
                                 <Link
                                     href={{
-                                        pathname: `/Home/${ID}`,
+                                        pathname: `/BlogPosts/${ID}`,
                                         query: {
                                             id: ID
                                         }
