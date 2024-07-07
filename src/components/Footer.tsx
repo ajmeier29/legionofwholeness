@@ -24,21 +24,12 @@ export default function Footer() {
                             <h2 className='bg-hero-gradient text-[30px] md:text-[35px] font-extrabold inline text-transparent bg-clip-text'>WHOLENESS</h2>
                         </div>
                         <ul className="flex flex-col sm:flex-row items-center gap-5 sm:gap-12">
-                            <li><a href="/"
-                                className="text-lg font-normal text-gray-800 transition-all duration-300 hover:text-amber-800  focus-within:outline-0">Home</a>
-                            </li>
-                            <li><a href="/BlogPosts"
-                                className="text-lg font-normal text-gray-800 transition-all duration-300 hover:text-amber-800  focus-within:outline-0">Blog</a>
-                            </li>
-                            <li><a href="jaascript:;"
-                                className="text-lg font-normal text-gray-800 transition-all duration-300 hover:text-amber-800 focus-within:outline-0">Subscribe</a>
-                            </li>
-                            <li><a href="jaascript:;"
-                                className="text-lg font-normal text-gray-800 transition-all duration-300 hover:text-amber-800 focus-within:outline-0">Schedule</a>
-                            </li>
-                            <li><a href="/Contact"
-                                className="text-lg font-normal text-gray-800 transition-all duration-300 hover:text-amber-800 focus-within:outline-0">Contact</a>
-                            </li>
+                            <SiteMapUrl url='/' name='Home' />
+                            <SiteMapUrl url='/BlogPosts' name='Blog' />
+                            <SiteMapUrl url='#' name='Reading List' />
+                            <SiteMapUrl url='#' name='Subscribe' />
+                            <SiteMapUrl url='#' name='Schedule' />
+                            <SiteMapUrl url='/Contact' name='Contact' />
                         </ul>
                     </div>
                     <div className="pt-7 flex flex-col min-[520px]:flex-row items-center justify-between gap-6">
@@ -81,5 +72,18 @@ export default function Footer() {
                 </div>
             </section>
         </>
+    )
+}
+
+interface SiteMapUrlProps {
+    url: string;
+    name: string;
+}
+
+function SiteMapUrl({ url, name }: SiteMapUrlProps) {
+    return (
+        <li><a href={url}
+            className="text-sm lg:text-md font-normal  text-gray-800 transition-all duration-300 hover:text-amber-800  focus-within:outline-0">{name}</a>
+        </li>
     )
 }
