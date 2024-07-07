@@ -61,6 +61,7 @@ export default function Contact() {
     } = useForm<FormData>()
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
+        g
         if (!captchaPass) {
             // toast({
             //     title: 'Unable to submit.',
@@ -141,7 +142,7 @@ export default function Contact() {
                                 onChange={onChange}
                                 data-size={'normal'}
                             />
-                            <button type="button" className="px-3 py-2 bg-button-primary-disabled text-slate-800 rounded-md hover:bg-button-primary-hover">
+                            <button type="submit" className="px-3 py-2 bg-button-primary-disabled text-slate-800 rounded-md hover:bg-button-primary-hover">
                                 <div className="flex flex-row justify-center items-center p-3">
                                     {loading ? (
                                         <>
