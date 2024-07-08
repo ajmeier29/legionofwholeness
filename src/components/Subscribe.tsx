@@ -1,0 +1,154 @@
+'use client'
+import React, { useEffect, useState } from "react";
+import ReCAPTCHA from 'react-google-recaptcha';
+import emailjs from '@emailjs/browser';
+import { SubmitHandler, useForm } from "react-hook-form"
+import Navbar from "./Navbar";
+
+
+export default function Subscribe() {
+    const captchaKey: string = (process.env.NEXT_PUBLIC_CAPTCA_SECRET as string);
+    const verifyUrl: string = (process.env.NEXT_PUBLIC_VERIFY_URL as string);
+    const emailApiKey: string = (process.env.NEXT_PUBLIC_EMAIL_SUB_KEY as string);
+    const listId: string = (process.env.NEXT_PUBLIC_EMAIL_LIST_ID as string);
+    const recaptcha = React.useRef<ReCAPTCHA>(null);
+    const [loading, setLoading] = useState(false);
+    const [captchaPass, setCaptchaPass] = useState<boolean>();
+
+    async function onChange(value: any) {
+        // verify captcha
+        const captchaValue = recaptcha?.current?.getValue()
+        if (!captchaValue) {
+            // Create toast message
+        } else {
+            // make form submission
+            try {
+                const res = await fetch(verifyUrl, {
+                    method: 'POST',
+                    body: JSON.stringify({ captchaValue }),
+                    mode: 'cors',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                })
+                const data = await res.json()
+                if (data.success) {
+                    setCaptchaPass(data.success)
+                } else {
+                    alert('reCAPTCHA validation failed!')
+                }
+            } catch (e) {
+                //console.log(`Exception from verify: ${e}`);
+            }
+        }
+    }
+    // The form data type
+    type FormData =
+        {
+            name: string,
+            email: string,
+            message: string
+        }
+
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<FormData>()
+
+    const url = `https://emailoctopus.com/api/1.5/lists/${listId}/contacts`;
+
+    const onSubmit: SubmitHandler<FormData> = async (data) => {
+        if (!captchaPass) {
+            // toast({
+            //     title: 'Unable to submit.',
+            //     description: "You must check the Captcha checkbox!",
+            //     status: 'error',
+            //     duration: 5000,
+            //     variant: 'subtle',
+            //     isClosable: true,
+            // })
+        } else {
+            try {
+                setLoading(true);
+                const subscriberData = {
+                    id: emailApiKey,
+                    email_address: 'newsubscriber@example.com'
+                };
+                fetch(url, {
+                    method: 'POST',
+                    body: JSON.stringify(subscriberData),
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('New subscriber added:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error adding subscriber:', error);
+                    });
+                // toast({
+                //     title: 'Message Sent!',
+                //     description: "We will be in contact soon.",
+                //     status: 'success',
+                //     duration: 5000,
+                //     variant: 'subtle',
+                //     isClosable: true,
+                // })
+                // reset form and captcha
+                reset();
+                setCaptchaPass(false);
+                recaptcha?.current?.reset();
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false);
+            }
+        }
+    }
+
+
+    return (
+        <>
+            <div className="absolute mt-28 md:mt-56 rounded-lg z-50">
+                <div className="flex h-full justify-center items-center bg-[#eae1d5] mx-16 md:mx-20 rounded-lg">
+                    <div className="p-6">
+                        <div
+                            className="flex flex-wrap items-center w-full max-w-5xl p-5 mx-auto text-left border border-gray-200 rounded-lg lg:flex-nowrap md:p-8 ">
+                            <div className="flex-1 w-full mb-5 md:mb-0 md:pr-5 lg:pr-10 md:w-1/2">
+                                <h3 className="mb-2 text-2xl font-bold text-gray-700">Subscribe to Newsletter</h3>
+                                <p className="text-gray-500">Provide your email to get email notification when there is a new blog post
+                                </p>
+                            </div>
+                            <div className="w-full px-1 flex-0 md:w-auto lg:w-1/2">
+                                <form >
+                                    <input type="hidden" name="tags" value="earlyaccess" />
+                                    <div className="flex flex-col sm:flex-row">
+                                        <input type="email" id="email" name="email" placeholder="Enter your email address" className="flex-1 px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md sm:mr-5 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 " />
+                                        <button type="submit" className="w-full px-6 py-4 mt-5 text-white  text-lg bg-[#9b6a5c] rounded-md sm:mt-0 sm:w-auto whitespace-nowrap "> Subscribe </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+const LoadingCircles = () => {
+    return (
+        <>
+            <div className="flex gap-2">
+                <div className="w-2 h-2 rounded-full animate-pulse bg-button-primary-txt-disabled"></div>
+                <div className="w-2 h-2 rounded-full animate-pulse bg-button-primary-txt-disabled"></div>
+                <div className="w-2 h-2 rounded-full animate-pulse bg-button-primary-txt-disabled mr-2"></div>
+            </div>
+        </>
+    )
+}
