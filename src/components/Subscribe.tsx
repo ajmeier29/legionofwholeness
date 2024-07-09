@@ -120,7 +120,7 @@ export default function Subscribe({ closeModal }: SubscribeProps) {
                 data-aos="zoom-in-up"
                 data-aos-delay="50"
                 data-aos-duration="500"
-                className="absolute mt-28 md:mt-56 rounded-lg z-50">
+                className="fixed mt-28 md:mt-56 rounded-lg z-50">
                 <div className="flex h-full justify-center items-center bg-[#eae1d5] mx-16 md:mx-20 rounded-lg">
                     <div className="p-6">
                         <div
