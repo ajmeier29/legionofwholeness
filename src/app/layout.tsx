@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { SubscribeProvider } from "@/lib/SubscribeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`bg-[#eae1d5] ${inter.className}`}>
-        {children}
+        <SubscribeProvider>{children}</SubscribeProvider>
       </body>
     </html>
   );
