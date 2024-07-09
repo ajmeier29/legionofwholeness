@@ -3,7 +3,7 @@ import { BlogPostData } from "@/data/data";
 import { BlogPostsDisplay } from "./BlogPostsDisplay";
 import ButtonBar from "./ButtonBar";
 import Hero from "./Hero";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Subscribe from "./Subscribe";
 import { SubscribeContext } from "@/lib/SubscribeContext";
 import ToastMessage from "./ToastMessage";
