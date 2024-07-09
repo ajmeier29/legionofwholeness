@@ -17,6 +17,9 @@ export default function Navbar({ marginTop = 'mt-20' }: NavBarProps) {
                     <NavBarOption link='/BlogPosts'>
                         BLOG
                     </NavBarOption>
+                    <NavBarOption link='/ReadingList'>
+                        READING LIST
+                    </NavBarOption>
                     <NavBarOption marginRight={false} link='/Contact'>
                         CONTACT
                     </NavBarOption>

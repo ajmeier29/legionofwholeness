@@ -26,7 +26,7 @@ export default function Footer() {
                         <ul className="flex flex-col sm:flex-row items-center gap-5 sm:gap-12">
                             <SiteMapUrl url='/' name='Home' />
                             <SiteMapUrl url='/BlogPosts' name='Blog' />
-                            <SiteMapUrl url='#' name='Reading List' />
+                            <SiteMapUrl url='/ReadingList' name='Reading List' />
                             <SiteMapUrl url='#' name='Schedule' />
                             <SiteMapUrl url='/Contact' name='Contact' />
                         </ul>
