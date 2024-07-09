@@ -1,5 +1,6 @@
 'use client'
-import React, { useState } from "react";
+import { SubscribeContext } from "@/lib/SubscribeContext";
+import React, { useContext, useState } from "react";
 import ReCAPTCHA from 'react-google-recaptcha';
 import { SubmitHandler, useForm } from "react-hook-form"
 
@@ -10,20 +11,18 @@ type SubscribeProps =
 
 
 export default function Subscribe({ closeModal }: SubscribeProps) {
+    const { showModal, setShowModal } = useContext(SubscribeContext);
     const captchaKey: string = (process.env.NEXT_PUBLIC_CAPTCA_INVISIBLE_PUB_KEY as string);
     const verifyUrl: string = (process.env.NEXT_PUBLIC_VERIFY_INVISIBLE_URL as string);
-    const emailApiKey: string = (process.env.NEXT_PUBLIC_EMAIL_SUB_KEY as string);
-    const listId: string = (process.env.NEXT_PUBLIC_EMAIL_LIST_ID as string);
+    const emailSubUrl: string = (process.env.NEXT_PUBLIC_EMAIL_SUB_URL as string);
     const recaptcha = React.useRef<ReCAPTCHA>(null);
     const [loading, setLoading] = useState(false);
     var captchaPass: boolean = false;
 
-
     async function onChange(value: any) {
         // verify captcha
-        //recaptcha?.current?.execute();
         await recaptcha?.current?.executeAsync();
-        console.log("captcha executed")
+        //console.log("captcha executed")
         const captchaValue = recaptcha?.current?.getValue()
         if (!captchaPass) {
             if (!captchaValue) {
@@ -42,11 +41,11 @@ export default function Subscribe({ closeModal }: SubscribeProps) {
                     const data = await res.json()
 
                     if (data.success) {
-                        console.log(`reCAPTCHA validation Passed! ${JSON.stringify(data)}`)
+                        //console.log(`reCAPTCHA validation Passed! ${JSON.stringify(data)}`)
                         captchaPass = data.success
                         return;
                     } else {
-                        console.log(`reCAPTCHA validation failed! ${JSON.stringify(data)}`)
+                        //console.log(`reCAPTCHA validation failed! ${JSON.stringify(data)}`)
                         return;
                     }
                 } catch (e) {
@@ -71,31 +70,20 @@ export default function Subscribe({ closeModal }: SubscribeProps) {
         formState: { errors },
     } = useForm<FormData>()
 
-    const url = `https://emailoctopus.com/api/1.5/lists/${listId}/contacts`;
-
-    const onSubmit: SubmitHandler<FormData> = async (data,) => {
+    const onSubmit: SubmitHandler<FormData> = async (data) => {
 
         await onChange(null);
 
         if (!captchaPass) {
-            console.log('captcha form fail')
-            // toast({
-            //     title: 'Unable to submit.',
-            //     description: "You must check the Captcha checkbox!",
-            //     status: 'error',
-            //     duration: 5000,
-            //     variant: 'subtle',
-            //     isClosable: true,
-            // })
+            //console.log('captcha form fail')
         } else {
             try {
                 setLoading(true);
-                console.log("Submitting email");
+                //console.log("Submitting email");
                 const subscriberData = {
-                    id: emailApiKey,
-                    email_address: 'newsubscriber@example.com'
+                    email_address: data.email
                 };
-                fetch(url, {
+                fetch(emailSubUrl, {
                     method: 'POST',
                     mode: 'cors',
                     body: JSON.stringify(subscriberData),
@@ -106,25 +94,17 @@ export default function Subscribe({ closeModal }: SubscribeProps) {
                 })
                     .then(response => response.json())
                     .then(data => {
-                        console.log('New subscriber added:', data);
+                        //console.log('New subscriber added:', data);
                     })
                     .catch(error => {
-                        console.error('Error adding subscriber:', error);
+                        //console.error('Error adding subscriber:', error);
                     });
-                // toast({
-                //     title: 'Message Sent!',
-                //     description: "We will be in contact soon.",
-                //     status: 'success',
-                //     duration: 5000,
-                //     variant: 'subtle',
-                //     isClosable: true,
-                // })
-                // reset form and captcha
                 reset();
                 captchaPass = false;
-                recaptcha?.current?.reset();
+                //recaptcha?.current?.reset();
+                setShowModal(false) // close the modal
             } catch (error) {
-                console.log(error);
+                //console.log(error);
             } finally {
                 setLoading(false);
             }
@@ -153,7 +133,10 @@ export default function Subscribe({ closeModal }: SubscribeProps) {
                                     <input type="hidden" name="tags" value="earlyaccess" />
                                     <div className="flex flex-col sm:flex-row">
                                         <input
-                                            onChange={onChange}
+                                            {...register("email",
+                                                {
+                                                    required: true
+                                                })}
                                             type="email" id="email" name="email" placeholder="Enter your email address" className="flex-1 px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md sm:mr-5 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 " />
                                         <button
                                             type="submit"
