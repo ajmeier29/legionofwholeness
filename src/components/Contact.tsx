@@ -7,8 +7,8 @@ import Navbar from "./Navbar";
 
 
 export default function Contact() {
-    const captchaKey: string = (process.env.NEXT_PUBLIC_CAPTCA_SECRET as string);
-    const verifyUrl: string = (process.env.NEXT_PUBLIC_VERIFY_URL as string);
+    const captchaKey: string = (process.env.NEXT_PUBLIC_CAPTCA_CHECKBOX_PUB_KEY as string);
+    const verifyUrl: string = (process.env.NEXT_PUBLIC_VERIFY_CHECKBOX_URL as string);
     const emailPubKey: string = (process.env.NEXT_PUBLIC_EMAIL_PUB_KEY as string);
     const emailServiceId: string = (process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string);
     const emailTemplateId: string = (process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string);
@@ -38,7 +38,7 @@ export default function Contact() {
                 if (data.success) {
                     setCaptchaPass(data.success)
                 } else {
-                    alert('reCAPTCHA validation failed!')
+                    //console.log(`reCAPTCHA validation failed!: ${JSON.stringify(data)}`)
                 }
             } catch (e) {
                 //console.log(`Exception from verify: ${e}`);

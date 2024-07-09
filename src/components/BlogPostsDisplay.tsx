@@ -10,7 +10,7 @@ export const BlogPostsDisplay: React.FC<{ blogPosts: BlogPostData[] }> = ({ blog
 
     return (
         <>
-            <div className="grid grid-cols-1 md:grid-cols-2 mt-4 gap-4 justify-center mx-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center mx-3">
                 {blogPosts ? (
                     <>
                         <BlogPostTile blogPosts={blogPosts} />
