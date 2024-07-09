@@ -11,7 +11,7 @@ type SubscribeProps =
 
 
 export default function Subscribe({ closeModal }: SubscribeProps) {
-    const { showModal, setShowModal } = useContext(SubscribeContext);
+    const { showModal, setShowModal, setshowSuccessMessage } = useContext(SubscribeContext);
     const captchaKey: string = (process.env.NEXT_PUBLIC_CAPTCA_INVISIBLE_PUB_KEY as string);
     const verifyUrl: string = (process.env.NEXT_PUBLIC_VERIFY_INVISIBLE_URL as string);
     const emailSubUrl: string = (process.env.NEXT_PUBLIC_EMAIL_SUB_URL as string);
@@ -102,7 +102,9 @@ export default function Subscribe({ closeModal }: SubscribeProps) {
                 reset();
                 captchaPass = false;
                 //recaptcha?.current?.reset();
+                setshowSuccessMessage(true);
                 setShowModal(false) // close the modal
+                console.log('setshowtoast')
             } catch (error) {
                 //console.log(error);
             } finally {
@@ -140,7 +142,7 @@ export default function Subscribe({ closeModal }: SubscribeProps) {
                                             type="email" id="email" name="email" placeholder="Enter your email address" className="flex-1 px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md sm:mr-5 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 " />
                                         <button
                                             type="submit"
-                                            className="w-full px-6 py-4 mt-5 text-white  text-lg bg-[#9b6a5c] rounded-md sm:mt-0 sm:w-auto whitespace-nowrap "> Subscribe </button>
+                                            className="w-full px-6 py-4 mt-5 text-white  text-lg bg-rust rounded-md sm:mt-0 sm:w-auto whitespace-nowrap "> Subscribe </button>
                                     </div>
                                     <ReCAPTCHA
                                         ref={recaptcha}

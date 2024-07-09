@@ -21,7 +21,8 @@ module.exports = {
         "button-primary": "#F6E6CB",
         "button-primary-hover": "#efd7b0",
         "button-primary-disabled": "#e7dfd2",
-        "button-primary-txt-disabled": "#b2ada5"
+        "button-primary-txt-disabled": "#b2ada5",
+        "rust": "#9b6a5c"
       },
       fontSize: {
         "navbar-font-xl": "20px"
