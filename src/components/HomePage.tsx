@@ -6,9 +6,10 @@ import Hero from "./Hero";
 import { useContext, useState } from "react";
 import Subscribe from "./Subscribe";
 import { SubscribeContext } from "@/lib/SubscribeContext";
+import ToastMessage from "./ToastMessage";
 
 export const HomePage: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts }) => {
-    const { showModal, setShowModal } = useContext(SubscribeContext)
+    const { showModal, setShowModal, showSuccessMessage } = useContext(SubscribeContext)
     const openModal = () => setShowModal(true);
     const closeModal = () => setShowModal(false);
 
@@ -19,6 +20,11 @@ export const HomePage: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts })
                     {showModal && (
                         <Subscribe closeModal={closeModal} />
                     )}
+                    {showSuccessMessage ?
+                        (
+                            <ToastMessage message="Subscribed!" />
+                        ) :
+                        (<></>)}
                 </div>
                 <div className="relative bg-hero-image-mobile bg-cover bg-bottom h-[600px] w-full rounded-lg overflow-hidden slideUpFromBottomFast">
                     <Hero subscribe />
