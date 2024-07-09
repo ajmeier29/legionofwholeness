@@ -1,8 +1,7 @@
 'use client'
-import { SubscribeContext } from '@/lib/SubscribeContext';
 import AOS from 'aos';
 import "aos/dist/aos.css";
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 
 export default function Footer() {
 
