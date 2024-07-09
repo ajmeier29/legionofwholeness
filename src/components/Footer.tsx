@@ -5,8 +5,6 @@ import "aos/dist/aos.css";
 import { useContext, useEffect } from 'react';
 
 export default function Footer() {
-    const { showModal, setShowModal } = useContext(SubscribeContext)
-    const openModal = () => setShowModal(true);
 
     useEffect(() => {
         AOS.init();
@@ -30,9 +28,6 @@ export default function Footer() {
                             <SiteMapUrl url='/' name='Home' />
                             <SiteMapUrl url='/BlogPosts' name='Blog' />
                             <SiteMapUrl url='#' name='Reading List' />
-                            <div onClick={openModal}>
-                                <SiteMapUrl url='#' name='Subscribe' />
-                            </div>
                             <SiteMapUrl url='#' name='Schedule' />
                             <SiteMapUrl url='/Contact' name='Contact' />
                         </ul>
