@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npx tailwindcss -o build.css --minify && next build",
-    "build": "npx tailwindcss -o build.css --minify && next build",
+    "prebuild": "npx tailwindcss -o build.css --minify",
+    "dev": "next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
