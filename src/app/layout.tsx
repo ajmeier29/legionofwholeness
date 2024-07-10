@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SubscribeProvider } from "@/lib/SubscribeContext";
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning={true} className={`bg-[#eae1d5] ${inter.className}`}>
         <SubscribeProvider>{children}</SubscribeProvider>
+        <Analytics />
       </body>
     </html>
   );
