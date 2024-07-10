@@ -14,7 +14,7 @@ export default async function Page() {
         .catch((error) => {
             //console.log(`Error: ${error}`)
         });
-
+    console.log(`All blog post data: ${JSON.stringify(blogs)}`)
     return (
         <>
             <Header />

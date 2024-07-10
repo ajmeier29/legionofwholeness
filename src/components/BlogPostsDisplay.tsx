@@ -5,6 +5,7 @@ import PreloadImage from "./PreloadImage";
 import AOS from 'aos';
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import GetFormattedDate from "@/lib/Date";
 
 export const BlogPostsDisplay: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts }) => {
 
@@ -61,7 +62,7 @@ const BlogPostTile = ({ blogPosts }: { blogPosts: BlogPostData[] }) => {
                                                 {author}
                                             </h3>
                                             <h4 className="text-white text-xs lg:text-md font-thin">
-                                                {publish_date}
+                                                {GetFormattedDate(publish_date)}
                                             </h4>
                                         </div>
                                     </div>
