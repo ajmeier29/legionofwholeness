@@ -4,6 +4,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import emailjs from '@emailjs/browser';
 import { SubmitHandler, useForm } from "react-hook-form"
 import Navbar from "./Navbar";
+import ToastMessage from "./ToastMessage";
 
 
 export default function Contact() {
@@ -62,14 +63,7 @@ export default function Contact() {
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
         if (!captchaPass) {
-            // toast({
-            //     title: 'Unable to submit.',
-            //     description: "You must check the Captcha checkbox!",
-            //     status: 'error',
-            //     duration: 5000,
-            //     variant: 'subtle',
-            //     isClosable: true,
-            // })
+
         } else {
             try {
                 setLoading(true);
@@ -78,15 +72,7 @@ export default function Contact() {
                     email: data.email,
                     message: data.message,
                 });
-                // toast({
-                //     title: 'Message Sent!',
-                //     description: "We will be in contact soon.",
-                //     status: 'success',
-                //     duration: 5000,
-                //     variant: 'subtle',
-                //     isClosable: true,
-                // })
-                // reset form and captcha
+                <ToastMessage message="Message Sent!" />
                 reset();
                 setCaptchaPass(false);
                 recaptcha?.current?.reset();
@@ -97,7 +83,6 @@ export default function Contact() {
             }
         }
     }
-
 
     return (
         <>
@@ -123,18 +108,18 @@ export default function Contact() {
                                 {...register("name", {
                                     required: true
                                 })}
-                                className="w-3/4 sm:w-1/2 lg:w-1/3 px-3 py-2 outline-none drop-shadow-xl rounded-lg h-[51px] z-0" placeholder="Enter your full name" />
+                                className="w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg h-[51px] z-0" placeholder="Enter your full name" />
                             <input type="text"
                                 {...register("email",
                                     {
                                         required: true
                                     })}
-                                className="w-3/4 sm:w-1/2 lg:w-1/3 px-3 py-2 outline-none drop-shadow-xl rounded-lg h-[51px] z-0" placeholder="Enter your email" />
+                                className="w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg h-[51px] z-0" placeholder="Enter your email" />
                             <textarea
                                 {...register("message", {
                                     required: true
                                 })}
-                                className="w-3/4 sm:w-1/2 lg:w-1/3 px-3 py-2 outline-none drop-shadow-xl rounded-lg z-0 h-28" placeholder="Message" />
+                                className="w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg z-0 h-28" placeholder="Message" />
                             <ReCAPTCHA
                                 ref={recaptcha}
                                 sitekey={captchaKey}
