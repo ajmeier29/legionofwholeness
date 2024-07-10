@@ -38,7 +38,8 @@ export default function Footer() {
                     <div className="pt-7 flex flex-col min-[520px]:flex-row items-center justify-between gap-6">
                         <span className="text-sm font-normal text-gray-500">©<a href="https://andrew-meier.dev">CodeByAndy</a> 2024, All rights reserved.</span>
                         <div className="flex items-center gap-4">
-                            <a href="https://www.instagram.com/legion_of_wholeness?igsh=MTh5YXF0ZTU1MW9pdg=="
+                            <a href='https://www.instagram.com/legion_of_wholeness?igsh=MTh5YXF0ZTU1MW9pdg=='
+                                aria-label='Link to Instagram Page'
                                 className="border border-rust p-2 rounded-full aspect-square text-rust transition-all duration-500 hover:text-slate-600 hover:border-slate-600 focus-within:outline-0 focus-within:text-slate-600 focus-within:border-slate-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path
@@ -46,7 +47,8 @@ export default function Footer() {
                                         fill="currentColor" />
                                 </svg>
                             </a>
-                            <a href="https://www.facebook.com/jbredbenner?mibextid=ZbWKwL "
+                            <a href='https://www.facebook.com/jbredbenner?mibextid=ZbWKwL'
+                                aria-label='Link to Facebook Page'
                                 className="border border-rust p-2 rounded-full aspect-square text-rust transition-all duration-500 hover:text-slate-600 hover:border-slate-600 focus-within:outline-0 focus-within:text-slate-600 focus-within:border-slate-600">
                                 <svg width="20" height="20" className="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
                             </a>
