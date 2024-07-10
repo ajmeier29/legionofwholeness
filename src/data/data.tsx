@@ -51,9 +51,42 @@ async function GetAllBlogPostData(): Promise<BlogPostData[]> {
             });
             //console.log(`allData: ${JSON.stringify(blogs)}`)
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+            //console.log(error)
+        });
 
     return blogs;
+}
+
+async function GetReadingListData(): Promise<BlogPostData> {
+    var readingList: BlogPostData | null = {};
+
+    const client = contentful.createClient({
+        space: process?.env?.NEXT_PUBLIC_SPACE || '',
+        environment: 'master', // defaults to 'master' if not set
+        accessToken: process?.env?.NEXT_PUBLIC_ACCESS_TOKEN || ''
+    })
+
+    await client.getEntry(process?.env?.NEXT_PUBLIC_READING_LIST ?? '')
+        .then((entry: any) => {
+            // const allData = entry.items; // Replace 'body' with your rich text field name
+            //console.log(JSON.stringify(entry))
+            readingList =
+            {
+                ID: entry.sys.id,
+                author: entry.fields.author,
+                title: entry.fields.title,
+                description: entry.fields.description.content[0].content[0].value,
+                content: documentToReactComponents(entry.fields.content),
+                imageUrl: 'https:' + entry.fields.image.fields.file.url,
+                created_on: entry.fields.createdOn
+            }
+
+        })
+        .catch((error) => {
+            //console.log(error)
+        });
+    return readingList;
 }
 
 const options = {
@@ -86,10 +119,12 @@ async function GetBlogPostData(id: string | null): Promise<BlogPostData> {
             }
 
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+            //console.log(error)
+        });
 
     return blogData;
 }
 
-export { GetAllBlogPostData, GetBlogPostData }
+export { GetAllBlogPostData, GetBlogPostData, GetReadingListData }
 export type { BlogPostData };

@@ -91,7 +91,7 @@ export default function Contact() {
                 setCaptchaPass(false);
                 recaptcha?.current?.reset();
             } catch (error) {
-                console.log(error);
+                //console.log(error);
             } finally {
                 setLoading(false);
             }
