@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-[#eae1d5] ${inter.className}`}>
+      <body suppressHydrationWarning={true} className={`bg-[#eae1d5] ${inter.className}`}>
         <SubscribeProvider>{children}</SubscribeProvider>
       </body>
     </html>
