@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import { useEffect } from 'react';
 
 export default function Footer() {
+    const schedulelUrl = process?.env?.NEXT_PUBLIC_SCHEDULE_URL ?? '';
 
     useEffect(() => {
         AOS.init();
@@ -31,7 +32,7 @@ export default function Footer() {
                             <SiteMapUrl url='/' name='Home' />
                             <SiteMapUrl url='/BlogPosts' name='Blog' />
                             <SiteMapUrl url='/ReadingList' name='Reading List' />
-                            <SiteMapUrl url='#' name='Schedule' />
+                            <SiteMapUrl url={schedulelUrl} name='Schedule' />
                             <SiteMapUrl url='/Contact' name='Contact' />
                         </ul>
                     </div>
