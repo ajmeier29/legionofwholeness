@@ -8,7 +8,7 @@ import heroPic from '../../../public/images/shadow-filled-valley-in-the-mountain
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Legion of Wholeness Blog Posts',
+    title: 'Posts | Legion of Wholeness',
 };
 
 
