@@ -28,7 +28,7 @@ const ToastMessage = ({ message, position = ToastPosition.Top }: ToastProps) => 
                     <div className={`fixed flex bg-rust py-2 px-4 rounded-md text-white text-center bottom-4 right-4 gap-4 z-50 toast show`}>
                         <p>{message}</p>
                     </div>
-                ) : (<></>)}'
+                ) : (<></>)}
         </>
     );
 };
