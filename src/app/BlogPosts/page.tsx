@@ -5,6 +5,11 @@ import Hero from "@/components/Hero";
 import { PreloadStaticImage } from "@/components/PreloadImage";
 import { BlogPostData, GetAllBlogPostData } from "@/data/data";
 import heroPic from '../../../public/images/shadow-filled-valley-in-the-mountains.webp';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Posts | Legion of Wholeness',
+};
 
 
 export default async function Page() {
