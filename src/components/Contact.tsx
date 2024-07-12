@@ -1,13 +1,15 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReCAPTCHA from 'react-google-recaptcha';
 import emailjs from '@emailjs/browser';
 import { SubmitHandler, useForm } from "react-hook-form"
 import Navbar from "./Navbar";
-import ToastMessage from "./ToastMessage";
+import ToastMessage, { ToastPosition } from "./ToastMessage";
+
 
 
 export default function Contact() {
+    const [showSentMessage, setShowSentMessage] = useState(false)
     const captchaKey: string = (process.env.NEXT_PUBLIC_CAPTCA_CHECKBOX_PUB_KEY as string);
     const verifyUrl: string = (process.env.NEXT_PUBLIC_VERIFY_CHECKBOX_URL as string);
     const emailPubKey: string = (process.env.NEXT_PUBLIC_EMAIL_PUB_KEY as string);
@@ -71,11 +73,13 @@ export default function Contact() {
                     from_name: data.name,
                     email: data.email,
                     message: data.message,
+                }).then(() => {
+                    console.log('sentQ!!!Q')
+                    setShowSentMessage(true);
+                    reset();
+                    setCaptchaPass(false);
+                    recaptcha?.current?.reset();
                 });
-                <ToastMessage message="Message Sent!" />
-                reset();
-                setCaptchaPass(false);
-                recaptcha?.current?.reset();
             } catch (error) {
                 //console.log(error);
             } finally {
@@ -150,6 +154,11 @@ export default function Contact() {
                         </form>
                     </div>
                 </div>
+                {showSentMessage ?
+                    (
+                        <ToastMessage position={ToastPosition.Bottom} message="Message Sent!" />
+                    ) :
+                    (<></>)}
             </div>
         </>
     )
