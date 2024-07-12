@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image, { StaticImageData } from "next/image";
 
 type Props =
