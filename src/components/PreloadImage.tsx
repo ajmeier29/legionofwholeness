@@ -12,10 +12,6 @@ export default function PreloadImage(props: Props) {
     var styles = `relative ${props?.styleProps}`;
     return (
         <>
-            {/* <Head>
-                <link rel="preload" fetchPriority="high" as="image" href={props?.imgSrc || ''} type="image/webp"></link>
-            </Head> */}
-            {/* <img className={props?.styleProps || ''} src={props?.imgSrc || ''} /> */}
             <div className={styles}>
                 <Image
                     alt={props?.alt ?? ''}
@@ -39,10 +35,6 @@ const PreloadStaticImage = (props: StaticProps) => {
     var styles = `relative ${props?.styleProps}`;
     return (
         <>
-            {/* <Head>
-                <link rel="preload" fetchPriority="high" as="image" href={props?.imgSrc || ''} type="image/webp"></link>
-            </Head> */}
-            {/* <img className={props?.styleProps || ''} src={props?.imgSrc || ''} /> */}
             <div className={styles}>
                 <Image
                     alt=''
