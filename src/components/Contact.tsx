@@ -1,13 +1,15 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReCAPTCHA from 'react-google-recaptcha';
 import emailjs from '@emailjs/browser';
 import { SubmitHandler, useForm } from "react-hook-form"
 import Navbar from "./Navbar";
-import ToastMessage from "./ToastMessage";
+import ToastMessage, { ToastPosition } from "./ToastMessage";
+
 
 
 export default function Contact() {
+    const [showSentMessage, setShowSentMessage] = useState(false)
     const captchaKey: string = (process.env.NEXT_PUBLIC_CAPTCA_CHECKBOX_PUB_KEY as string);
     const verifyUrl: string = (process.env.NEXT_PUBLIC_VERIFY_CHECKBOX_URL as string);
     const emailPubKey: string = (process.env.NEXT_PUBLIC_EMAIL_PUB_KEY as string);
@@ -71,11 +73,13 @@ export default function Contact() {
                     from_name: data.name,
                     email: data.email,
                     message: data.message,
+                }).then(() => {
+                    console.log('sentQ!!!Q')
+                    setShowSentMessage(true);
+                    reset();
+                    setCaptchaPass(false);
+                    recaptcha?.current?.reset();
                 });
-                <ToastMessage message="Message Sent!" />
-                reset();
-                setCaptchaPass(false);
-                recaptcha?.current?.reset();
             } catch (error) {
                 //console.log(error);
             } finally {
@@ -108,18 +112,23 @@ export default function Contact() {
                                 {...register("name", {
                                     required: true
                                 })}
-                                className="w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg h-[51px] z-0" placeholder="Enter your full name" />
+                                className={`w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg h-[51px] z-0 ${errors.name ? 'placeholder-red-400' : ''}`}
+                                placeholder={`${errors.email ? 'Full name is required' : 'Enter your full name'}`}
+                            />
                             <input type="text"
                                 {...register("email",
                                     {
                                         required: true
                                     })}
-                                className="w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg h-[51px] z-0" placeholder="Enter your email" />
+                                className={`w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg h-[51px] z-0 ${errors.email ? 'placeholder-red-400' : ''}`}
+                                placeholder={`${errors.email ? 'Email is required' : 'Enter your email'}`} />
                             <textarea
                                 {...register("message", {
                                     required: true
                                 })}
-                                className="w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg z-0 h-28" placeholder="Message" />
+                                className={`w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg z-0 h-28 ${errors.message ? 'placeholder-red-400' : ''}`}
+                                placeholder={`${errors.message ? 'Message is required' : 'Message'}`}
+                            />
                             <ReCAPTCHA
                                 ref={recaptcha}
                                 sitekey={captchaKey}
@@ -145,6 +154,11 @@ export default function Contact() {
                         </form>
                     </div>
                 </div>
+                {showSentMessage ?
+                    (
+                        <ToastMessage position={ToastPosition.Bottom} message="Message Sent!" />
+                    ) :
+                    (<></>)}
             </div>
         </>
     )

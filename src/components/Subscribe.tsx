@@ -139,7 +139,9 @@ export default function Subscribe({ closeModal }: SubscribeProps) {
                                                 {
                                                     required: true
                                                 })}
-                                            type="email" id="email" name="email" placeholder="Enter your email address" className="flex-1 px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md sm:mr-5 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 " />
+                                            type="email" id="email" name="email"
+                                            placeholder={`${errors.email ? 'Email address is required' : 'Enter your email address'}`}
+                                            className={`flex-1 px-3 py-2 ${errors.email ? 'placeholder-red-400' : 'placeholder-gray-300'} border border-gray-300 rounded-md sm:mr-5 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300`} />
                                         <button
                                             type="submit"
                                             className="w-full px-6 py-4 mt-5 text-white  text-lg bg-rust rounded-md sm:mt-0 sm:w-auto whitespace-nowrap "> Subscribe </button>
