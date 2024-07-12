@@ -108,18 +108,23 @@ export default function Contact() {
                                 {...register("name", {
                                     required: true
                                 })}
-                                className="w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg h-[51px] z-0" placeholder="Enter your full name" />
+                                className={`w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg h-[51px] z-0 ${errors.name ? 'placeholder-red-400' : ''}`}
+                                placeholder={`${errors.email ? 'Full name is required' : 'Enter your full name'}`}
+                            />
                             <input type="text"
                                 {...register("email",
                                     {
                                         required: true
                                     })}
-                                className="w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg h-[51px] z-0" placeholder="Enter your email" />
+                                className={`w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg h-[51px] z-0 ${errors.email ? 'placeholder-red-400' : ''}`}
+                                placeholder={`${errors.email ? 'Email is required' : 'Enter your email'}`} />
                             <textarea
                                 {...register("message", {
                                     required: true
                                 })}
-                                className="w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg z-0 h-28" placeholder="Message" />
+                                className={`w-3/4 md:w-1/2 px-3 py-2 outline-none drop-shadow-xl rounded-lg z-0 h-28 ${errors.message ? 'placeholder-red-400' : ''}`}
+                                placeholder={`${errors.message ? 'Message is required' : 'Message'}`}
+                            />
                             <ReCAPTCHA
                                 ref={recaptcha}
                                 sitekey={captchaKey}
