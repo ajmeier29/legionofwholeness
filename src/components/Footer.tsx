@@ -20,8 +20,8 @@ export default function Footer() {
                 className="pt-16 pb-7 ">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col min-[830px]:flex-row items-center justify-between gap-6 pb-10 border-b-2 border-gray-600">
-                        <div className="max-sm:flex max-sm:flex-col max-sm:items-center">
-                            <h2 className='text-[20px] md:text-[20px] font-light text-slate-600 inline'>
+                        <div className="max-sm:flex max-sm:flex-col max-sm:items-center bg-rust p-2 rounded-2xl">
+                            <h2 className='text-[20px] md:text-[20px] font-light text-white inline'>
                                 LEGION OF&nbsp;
                             </h2>
                             <h2 className='bg-hero-gradient text-[30px] md:text-[35px] font-extrabold inline text-transparent bg-clip-text'>

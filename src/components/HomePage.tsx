@@ -28,12 +28,10 @@ export const HomePage: React.FC<{ blogPosts: BlogPostData[] }> = ({ blogPosts })
                         ) :
                         (<></>)}
                 </div>
-                {/* <div className="relative bg-hero-image-mobile bg-cover bg-bottom h-[600px] w-full rounded-lg overflow-hidden slideUpFromBottomFast"> */}
                 <PreloadStaticImage imgSrc={heroPic} styleProps={'absolute object-cover overflow-hidden rounded-lg h-[600px] w-full z-0'}></PreloadStaticImage>
-                <div className="absolute z-50">
+                <div className="absolute z-40">
                     <Hero subscribe />
                 </div>
-                {/* </div> */}
                 <div className="slideUpFromBottomSlow">
                     <ButtonBar setSomeState={openModal} />
                 </div>
