@@ -11,7 +11,7 @@ export default function Hero(props: HeroProps) {
     const openModal = () => setShowModal(true);
     return (
         <>
-            <div className="absolute bottom-6 md:bottom-20 left-7 md:left-12">
+            <div className="absolute bottom-6 md:bottom-20 left-7 md:left-12 z-50">
                 <div className='w-full'>
                     <h2 className='text-[30px] md:text-[40px] font-light text-primary inline'>LEGION OF&nbsp;</h2>
                     <h2 className='bg-hero-gradient text-[40px] md:text-[55px] font-extrabold inline text-transparent bg-clip-text'>WHOLENESS</h2>
